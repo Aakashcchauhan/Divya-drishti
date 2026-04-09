@@ -1,0 +1,71 @@
+metadata:
+  agent_name: "Divya Drishti"
+  agent_mode: "Deep-Audit"
+  last_updated: "2026-04-08"
+  schema_version: "1.0.0"
+
+preferences:
+  priority_files:
+    - "src/auth/**"
+    - "src/api/**"
+    - "src/controllers/**"
+    - "src/routes/**"
+  ignore_list:
+    - "node_modules"
+    - "dist"
+    - "build"
+    - ".git"
+    - "coverage"
+    - "vendor"
+  auto_fix_enabled: false
+  report_format: "markdown"
+  severity_policy: "strict"
+
+knowledge_base:
+  patterns_to_watch:
+    - name: "Hardcoded Secret"
+      category: "security"
+      pattern: "const\\s+.*(key|secret|token|password)\\s*=\\s*['\"].+['\"]"
+      severity: "critical"
+      cwe: "CWE-798"
+
+    - name: "Dynamic Code Execution"
+      category: "security"
+      pattern: "\\beval\\s*\\("
+      severity: "critical"
+      cwe: "CWE-95"
+
+    - name: "Unsafe DOM Injection"
+      category: "security"
+      pattern: "innerHTML|dangerouslySetInnerHTML"
+      severity: "high"
+      cwe: "CWE-79"
+
+    - name: "Loose Equality"
+      category: "logic"
+      pattern: "=="
+      severity: "medium"
+
+    - name: "Blocking IO"
+      category: "performance"
+      pattern: "readFileSync|writeFileSync|execSync"
+      severity: "high"
+
+  resolved_issues:
+    - id: "SEC-001"
+      title: "Fixed SQL injection in login.js"
+      category: "security"
+      date: "2026-04-01"
+      status: "resolved"
+
+  ignored_paths:
+    - "test/fixtures/**"
+    - "examples/**"
+
+state:
+  last_commit_audited: "a1b2c3d"
+  last_audit_at: "2026-04-08T00:00:00.000Z"
+  total_audits: 0
+  total_vulnerabilities_found: 0
+  total_high_risk_findings: 0
+  last_run_status: "idle"

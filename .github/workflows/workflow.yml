@@ -18,8 +18,8 @@ jobs:
       CI: "true"
       GENERATE_PDF_IN_CI: "true"
       TARGET_REPO_PATH: ${{ github.workspace }}
-      AUDITOR_REPO: your-org/divya-drishti
-      AUDITOR_REF: main
+      AUDITOR_REPO: ${{ github.repository }}
+      AUDITOR_REF: ${{ github.ref_name }}
 
     steps:
       - name: Checkout target repository
@@ -27,19 +27,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: .divya-drishti/package-lock.json
-
       - name: Checkout Divya Drishti auditor
         uses: actions/checkout@v4
         with:
           repository: ${{ env.AUDITOR_REPO }}
           ref: ${{ env.AUDITOR_REF }}
           path: .divya-drishti
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: .divya-drishti/package-lock.json
 
       - name: Install auditor dependencies
         working-directory: .divya-drishti
@@ -51,15 +51,21 @@ jobs:
 
       - name: Build deduplicated critical risk summary
         if: always()
-        working-directory: .divya-drishti
         shell: bash
+        working-directory: ${{ github.workspace }}
         run: |
+          set -euo pipefail
+          pwd
+          ls -la
+          mkdir -p .divya-drishti
+          export REPORT_PATH="${GITHUB_WORKSPACE}/.divya-drishti/AUDIT_REPORT.md"
+          export OUT_PATH="${GITHUB_WORKSPACE}/.divya-drishti/AUDIT_SUMMARY.md"
+
           node <<'EOF'
           const fs = require("fs");
-          const path = require("path");
 
-          const reportPath = path.resolve("AUDIT_REPORT.md");
-          const outPath = path.resolve("AUDIT_SUMMARY.md");
+          const reportPath = process.env.REPORT_PATH;
+          const outPath = process.env.OUT_PATH;
 
           const now = new Date().toISOString();
 
@@ -156,6 +162,7 @@ jobs:
       - name: Publish summary to GitHub run
         if: always()
         shell: bash
+        working-directory: ${{ github.workspace }}
         run: |
           if [ -f .divya-drishti/AUDIT_SUMMARY.md ]; then
             cat .divya-drishti/AUDIT_SUMMARY.md >> "$GITHUB_STEP_SUMMARY"

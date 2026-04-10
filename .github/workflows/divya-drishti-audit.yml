@@ -70,8 +70,11 @@ jobs:
 
       - name: Generate Summary Report
         shell: bash
+        working-directory: ${{ github.workspace }}
         run: |
           set -euo pipefail
+          pwd
+          ls -la
           {
             echo "# Audit Summary Report"
             echo

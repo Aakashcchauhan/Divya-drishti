@@ -1,4 +1,4 @@
-# ⭐ SOUL.md — Divya Drishti
+#  SOUL.md — Divya Drishti
 
 ---
 

@@ -175,9 +175,13 @@ const getTopByCategory = (findings, category) => {
   return sortFindings(items)[0].issue;
 };
 
-const buildAiSummary = (findings, breakdown, verdict) => {
+const buildAiSummary = (findings, breakdown, verdict, diagnostics = {}, scannedFilesCount = 0) => {
+  if (scannedFilesCount === 0) {
+    return "Audit coverage is incomplete: no scannable files were processed. Results are not reliable until file discovery is fixed.";
+  }
+
   if (!findings.length) {
-    return "The system appears Safe under current scanner rules. No actionable findings were produced.";
+    return "No actionable findings were produced for scanned files. Verify scanner rules and run targeted test cases to confirm detection quality.";
   }
 
   const topFindings = sortFindings(findings).slice(0, 3);
@@ -206,7 +210,8 @@ const renderMarkdown = (data) => {
     aiSummary,
     targetLabel,
     targetPath,
-    scannedFilesCount
+    scannedFilesCount,
+    diagnostics = {}
   } = data;
 
   const priority = groupByPriority(findings);
@@ -225,6 +230,31 @@ const renderMarkdown = (data) => {
 
   report += "## Executive Summary\n\n";
   report += `${aiSummary}\n\n`;
+
+  if (diagnostics?.fileReader) {
+    const fileReader = diagnostics.fileReader;
+    report += "## Scan Diagnostics\n\n";
+    report += `- Files discovered: ${fileReader.discovered || 0}\n`;
+    report += `- Files scannable: ${fileReader.scannable || 0}\n`;
+    report += `- Files skipped: ${fileReader.skipped || 0}\n`;
+    report += `- Files errored: ${fileReader.errored || 0}\n`;
+    report += `- Total scan time: ${diagnostics.totalScanTimeMs || 0} ms\n\n`;
+
+    const scannerStats = diagnostics.scanners || {};
+    const scannerNames = Object.keys(scannerStats);
+
+    if (scannerNames.length > 0) {
+      report += "| Scanner | Files Visited | Findings | Failures | Duration (ms) |\n";
+      report += "|---------|---------------|----------|----------|---------------|\n";
+
+      scannerNames.forEach((name) => {
+        const stat = scannerStats[name] || {};
+        report += `| ${name} | ${stat.filesVisited || 0} | ${stat.findingsProduced || 0} | ${stat.failures || 0} | ${stat.durationMs || 0} |\n`;
+      });
+
+      report += "\n";
+    }
+  }
 
   report += "## Severity Breakdown\n\n";
   report += "| Critical | High | Medium | Low |\n";
@@ -335,11 +365,12 @@ export const reportGenerator = async (memoryPath, format = "markdown", options =
   const scannedFilesCount = Array.isArray(options.scannedFiles)
     ? options.scannedFiles.length
     : 0;
+  const diagnostics = options.diagnostics || {};
 
   const breakdown = getBreakdown(findings);
   const verdict = getVerdict(breakdown, findings);
   const score = calculateScore(breakdown, findings.length);
-  const aiSummary = buildAiSummary(findings, breakdown, verdict);
+  const aiSummary = buildAiSummary(findings, breakdown, verdict, diagnostics, scannedFilesCount);
 
   const result = {
     summary: {
@@ -353,7 +384,8 @@ export const reportGenerator = async (memoryPath, format = "markdown", options =
       ai_summary: aiSummary,
       target: targetLabel,
       target_path: targetPath,
-      files_scanned: scannedFilesCount
+      files_scanned: scannedFilesCount,
+      diagnostics
     },
     findings: findings.map((f) => ({
       id: f.id,
@@ -381,7 +413,8 @@ export const reportGenerator = async (memoryPath, format = "markdown", options =
     aiSummary,
     targetLabel,
     targetPath,
-    scannedFilesCount
+    scannedFilesCount,
+    diagnostics
   });
 };
 

@@ -27,6 +27,7 @@ Options:
 
 Examples:
   node index.js ./project
+  node index.js "F:\\Study\\5 project\\a1enterprises"
   node index.js ./project --json
 `);
 };
@@ -41,9 +42,10 @@ if (args.includes("--help")) {
   process.exit(0);
 }
 
-let projectPath = args[0];
 const isJSON = args.includes("--json");
 const isVerbose = args.includes("--verbose");
+const positionalArgs = args.filter((arg) => !arg.startsWith("--"));
+let projectPath = positionalArgs.length > 0 ? positionalArgs.join(" ") : undefined;
 const isCI = process.env.CI === "true" || process.env.GITHUB_ACTIONS === "true";
 const shouldGeneratePdfInCI = process.env.GENERATE_PDF_IN_CI === "true";
 

@@ -1,5 +1,0 @@
-timestamp=2026-04-10T05:35:44.253Z
-target=F:\hackathon\Divya Drishti
-total_findings=1077
-critical=12
-high=24

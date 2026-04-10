@@ -88,7 +88,8 @@ export const fileReader = async (dir, options = {}) => {
     useGitignore = true
   } = options;
 
-  const pattern = `${dir}/**/*.{${extensions.join(",")}}`;
+  const normalizedDir = path.resolve(dir).replace(/\\/g, "/");
+  const pattern = `${normalizedDir}/**/*.{${extensions.join(",")}}`;
 
   const ignorePatterns = DEFAULT_IGNORE_DIRS.map(d => `**/${d}/**`);
 
@@ -101,7 +102,8 @@ export const fileReader = async (dir, options = {}) => {
   try {
     files = await glob(pattern, {
       ignore: ignorePatterns,
-      nodir: true
+      nodir: true,
+      windowsPathsNoEscape: true
     });
   } catch (err) {
     throw new Error(`File discovery failed: ${err.message}`);

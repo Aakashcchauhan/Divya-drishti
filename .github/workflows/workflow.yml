@@ -1,0 +1,178 @@
+name: Divya Drishti Global Audit
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      CI: "true"
+      GENERATE_PDF_IN_CI: "true"
+      TARGET_REPO_PATH: ${{ github.workspace }}
+      AUDITOR_REPO: your-org/divya-drishti
+      AUDITOR_REF: main
+
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: .divya-drishti/package-lock.json
+
+      - name: Checkout Divya Drishti auditor
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.AUDITOR_REPO }}
+          ref: ${{ env.AUDITOR_REF }}
+          path: .divya-drishti
+
+      - name: Install auditor dependencies
+        working-directory: .divya-drishti
+        run: npm ci
+
+      - name: Run audit against repository workspace
+        working-directory: .divya-drishti
+        run: node index.js "${{ env.TARGET_REPO_PATH }}"
+
+      - name: Build deduplicated critical risk summary
+        if: always()
+        working-directory: .divya-drishti
+        shell: bash
+        run: |
+          node <<'EOF'
+          const fs = require("fs");
+          const path = require("path");
+
+          const reportPath = path.resolve("AUDIT_REPORT.md");
+          const outPath = path.resolve("AUDIT_SUMMARY.md");
+
+          const now = new Date().toISOString();
+
+          if (!fs.existsSync(reportPath)) {
+            const fallback = [
+              "# Divya Drishti Audit Summary",
+              "",
+              `Generated: ${now}`,
+              "",
+              "## Status",
+              "- Full report was not generated. Check workflow logs for execution errors.",
+            ].join("\n");
+            fs.writeFileSync(outPath, fallback, "utf8");
+            process.exit(0);
+          }
+
+          const raw = fs.readFileSync(reportPath, "utf8");
+          const lines = raw.split(/\r?\n/);
+          const allFindings = [];
+
+          const findingPattern = /(critical|high|sev\s*1|p0|p1)/i;
+
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
+            if (!findingPattern.test(trimmed)) continue;
+
+            const clean = trimmed
+              .replace(/^[-*\d.\s]+/, "")
+              .replace(/[|`>#]/g, " ")
+              .replace(/\s+/g, " ")
+              .trim();
+
+            if (clean.length < 12) continue;
+            allFindings.push(clean);
+          }
+
+          const normalize = (text) =>
+            text
+              .toLowerCase()
+              .replace(/\([^)]*\)/g, "")
+              .replace(/\[[^\]]*\]/g, "")
+              .replace(/\b(line|ln|file|path)\b\s*[:#-]?\s*\d+/g, "")
+              .replace(/\s+/g, " ")
+              .trim();
+
+          const dedup = new Map();
+          for (const item of allFindings) {
+            const key = normalize(item);
+            if (!key) continue;
+
+            if (!dedup.has(key)) {
+              dedup.set(key, { text: item, count: 1 });
+            } else {
+              dedup.get(key).count += 1;
+            }
+          }
+
+          const unique = Array.from(dedup.values())
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 30);
+
+          const summary = [
+            "# Divya Drishti Audit Summary",
+            "",
+            `Generated: ${now}`,
+            `Scanned repository: ${process.env.GITHUB_REPOSITORY || "unknown"}`,
+            "",
+            "## Executive Snapshot",
+            `- Total Critical/High signal lines detected: ${allFindings.length}`,
+            `- Unique Critical/High risks after deduplication: ${unique.length}`,
+            "- Focus: Security, Business Logic, Performance, UI/UX",
+            "",
+            "## Top Deduplicated Risks",
+          ];
+
+          if (unique.length === 0) {
+            summary.push("- No Critical/High findings were detected in the generated report.");
+          } else {
+            unique.forEach((risk, index) => {
+              summary.push(`${index + 1}. ${risk.text} (repeated ${risk.count}x)`);
+            });
+          }
+
+          summary.push(
+            "",
+            "## Next Action",
+            "- Review AUDIT_REPORT.md and audit_report.pdf for full evidence and remediation details."
+          );
+
+          fs.writeFileSync(outPath, summary.join("\n"), "utf8");
+          EOF
+
+      - name: Publish summary to GitHub run
+        if: always()
+        shell: bash
+        run: |
+          if [ -f .divya-drishti/AUDIT_SUMMARY.md ]; then
+            cat .divya-drishti/AUDIT_SUMMARY.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No summary file generated." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload audit report artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: divya-drishti-audit-${{ github.run_number }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            .divya-drishti/AUDIT_REPORT.md
+            .divya-drishti/AUDIT_SUMMARY.md
+            .divya-drishti/memory/audit_report.pdf
+            .divya-drishti/memory/*.json
+            .divya-drishti/memory/latest_run.txt

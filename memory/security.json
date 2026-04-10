@@ -1,0 +1,114 @@
+{
+  "findings": [
+    {
+      "type": "security_finding",
+      "id": "XSS_DOM_234",
+      "category": "security",
+      "severity": "high",
+      "confidence": "medium",
+      "cwe": "CWE-79",
+      "location": {
+        "file": "core\\ai-orchestrator.js",
+        "line": 234
+      },
+      "file": "core\\ai-orchestrator.js",
+      "line": 234,
+      "language": "javascript",
+      "issue": "DOM-based XSS Risk",
+      "reasoning": "Execution of malicious scripts in client environment.",
+      "exploit": [],
+      "impact": "Execution of malicious scripts in client environment.",
+      "fix": "Sanitize input or use safe rendering methods.",
+      "recommendation": "Sanitize input or use safe rendering methods.",
+      "evidence": "if (/innerHTML\\s*=|dangerouslySetInnerHTML/i.test(source) && !/sanitize|dompurify/i.test(source)) {"
+    },
+    {
+      "type": "security_finding",
+      "id": "XSS_DOM_146",
+      "category": "security",
+      "severity": "high",
+      "confidence": "medium",
+      "cwe": "CWE-79",
+      "location": {
+        "file": "skills\\security-scan\\security_scanner.js",
+        "line": 146
+      },
+      "file": "skills\\security-scan\\security_scanner.js",
+      "line": 146,
+      "language": "javascript",
+      "issue": "DOM-based XSS Risk",
+      "reasoning": "Execution of malicious scripts in client environment.",
+      "exploit": [],
+      "impact": "Execution of malicious scripts in client environment.",
+      "fix": "Sanitize input or use safe rendering methods.",
+      "recommendation": "Sanitize input or use safe rendering methods.",
+      "evidence": "regex: /(innerHTML\\s*=|dangerouslySetInnerHTML|document\\.write\\()/i,"
+    },
+    {
+      "type": "security_finding",
+      "id": "XSS_DOM_475",
+      "category": "security",
+      "severity": "high",
+      "confidence": "medium",
+      "cwe": "CWE-79",
+      "location": {
+        "file": "skills\\security-scan\\security_scanner.js",
+        "line": 475
+      },
+      "file": "skills\\security-scan\\security_scanner.js",
+      "line": 475,
+      "language": "javascript",
+      "issue": "DOM-based XSS Risk",
+      "reasoning": "Execution of malicious scripts in client environment.",
+      "exploit": [],
+      "impact": "Execution of malicious scripts in client environment.",
+      "fix": "Sanitize input or use safe rendering methods.",
+      "recommendation": "Sanitize input or use safe rendering methods.",
+      "evidence": "evidence: \"innerHTML = [tainted]\""
+    },
+    {
+      "type": "security_finding",
+      "id": "INSECURE_RANDOM_65",
+      "category": "security",
+      "severity": "medium",
+      "confidence": "medium",
+      "cwe": "CWE-338",
+      "location": {
+        "file": "skills\\report-generator\\report_generator.js",
+        "line": 65
+      },
+      "file": "skills\\report-generator\\report_generator.js",
+      "line": 65,
+      "language": "javascript",
+      "issue": "Insecure Random Generator",
+      "reasoning": "Predictable values in security-sensitive contexts.",
+      "exploit": [],
+      "impact": "Predictable values in security-sensitive contexts.",
+      "fix": "Use crypto-secure random generators.",
+      "recommendation": "Use crypto-secure random generators.",
+      "evidence": "id: finding.id || `FINDING_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,"
+    },
+    {
+      "type": "security_finding",
+      "id": "MISSING_SECURITY_HEADERS_1",
+      "category": "security",
+      "severity": "low",
+      "confidence": "low",
+      "cwe": "CWE-693",
+      "location": {
+        "file": "skills\\git-manager\\git_manager.js",
+        "line": 1
+      },
+      "file": "skills\\git-manager\\git_manager.js",
+      "line": 1,
+      "language": "javascript",
+      "issue": "Missing security headers middleware",
+      "reasoning": "Response writing detected but no helmet/security header middleware reference found.",
+      "exploit": [],
+      "impact": "Lack of hardening headers can increase browser-side attack surface.",
+      "fix": "Enable helmet or equivalent security header middleware for HTTP responses.",
+      "recommendation": "Enable helmet or equivalent security header middleware for HTTP responses.",
+      "evidence": "res.send/json usage without helmet"
+    }
+  ]
+}

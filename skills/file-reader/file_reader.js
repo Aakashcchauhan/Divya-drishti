@@ -23,6 +23,13 @@ const MAX_FILE_SIZE = 1024 * 1024; // 1MB
 const CONCURRENCY = Math.max(4, os.cpus().length);
 const READ_TIMEOUT = 5000; // ms
 
+const READER_HINTS = {
+  readerType: "safe-file-reader",
+  usesConcurrencyControl: true,
+  hasTimeoutProtection: true,
+  memorySafe: true
+};
+
 // -------------------------
 // Load .gitignore rules
 // -------------------------
@@ -101,12 +108,16 @@ export const fileReader = async (dir, options = {}) => {
   }
 
   const results = [];
+  const seen = new Set();
 
   await Promise.all(
     files.map(file =>
       limiter(async () => {
+        const relativePath = path.relative(dir, file);
+
         try {
-          const relativePath = path.relative(dir, file);
+          if (seen.has(relativePath)) return;
+          seen.add(relativePath);
 
           if (ig && ig.ignores(relativePath)) return;
 
@@ -119,10 +130,22 @@ export const fileReader = async (dir, options = {}) => {
             const preview = await readFileChunk(file);
 
             results.push({
+              type: "file",
               path: relativePath,
-              skipped: true,
+              status: "skipped",
+              severity: "low",
               reason: "File too large",
-              preview
+              preview,
+              metadata: {
+                size: stats.size,
+                extension: path.extname(file),
+                modifiedAt: stats.mtime,
+                createdAt: stats.ctime,
+                permissions: stats.mode,
+                encoding: "utf8",
+                securityStatus: "skipped"
+              },
+              hints: READER_HINTS
             });
 
             return;
@@ -133,15 +156,31 @@ export const fileReader = async (dir, options = {}) => {
           // Binary detection
           if (isBinary(content)) {
             results.push({
+              type: "file",
               path: relativePath,
-              skipped: true,
-              reason: "Binary file"
+              status: "skipped",
+              severity: "low",
+              reason: "Binary file",
+              metadata: {
+                size: stats.size,
+                extension: path.extname(file),
+                modifiedAt: stats.mtime,
+                createdAt: stats.ctime,
+                permissions: stats.mode,
+                encoding: "utf8",
+                securityStatus: "skipped"
+              },
+              hints: READER_HINTS
             });
             return;
           }
 
           const fileData = {
+            type: "file",
             path: relativePath,
+            status: "safe",
+            severity: "none",
+            hints: READER_HINTS,
             content
           };
 
@@ -150,18 +189,26 @@ export const fileReader = async (dir, options = {}) => {
               size: stats.size,
               extension: path.extname(file),
               modifiedAt: stats.mtime,
-              createdAt: stats.ctime
+              createdAt: stats.ctime,
+              permissions: stats.mode,
+              encoding: "utf8",
+              securityStatus: "safe"
             };
           }
 
           results.push(fileData);
 
         } catch (err) {
+          const errorPath = relativePath || file;
+
           results.push({
-            path: file,
-            error: true,
-            type: err.name,
-            message: err.message
+            type: "file",
+            path: errorPath,
+            status: "error",
+            severity: "low",
+            errorType: err.name,
+            message: err.message,
+            hints: READER_HINTS
           });
         }
       })

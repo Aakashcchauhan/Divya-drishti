@@ -111,16 +111,40 @@ This skill must strictly control what is read and what is ignored.
 
 ## Output Format
 
-All output must follow this exact structure:
+All output must follow a strict JSON schema.
 
-### File: {relative_path}
+Each item in the returned array must use this shape:
 
-Metadata:
-- Size: {size_in_kb} KB
-- Extension: {file_extension}
-- Encoding: {encoding}
-- Permissions: {mode}
-- Security Status: Safe / Skipped
+```json
+{
+  "type": "file",
+  "path": "relative/path/to/file",
+  "status": "safe | skipped | error",
+  "severity": "none | low | medium | high",
+  "content": "...optional for safe files...",
+  "reason": "...required for skipped files...",
+  "errorType": "...required for error files...",
+  "message": "...required for error files...",
+  "preview": "...optional preview for large skipped files...",
+  "metadata": {
+    "size": 1234,
+    "extension": ".js",
+    "modifiedAt": "ISO date",
+    "createdAt": "ISO date",
+    "permissions": 33188,
+    "encoding": "utf8",
+    "securityStatus": "safe | skipped"
+  },
+  "hints": {
+    "readerType": "safe-file-reader",
+    "usesConcurrencyControl": true,
+    "hasTimeoutProtection": true,
+    "memorySafe": true
+  }
+}
+```
 
-```language
-{raw_file_content}
+Notes:
+- `status: safe` entries must include `content`.
+- `status: skipped` entries should include `reason` and may include `preview`.
+- `status: error` entries must include `errorType` and `message`.

@@ -1,96 +1,117 @@
 # RULES.md — Operational Protocol
 
-## Purpose
+## 1. Purpose
 
-This document defines how Divya Drishti performs code audits.
+This document defines the **operational standards and execution logic** of the Divya Drishti GitAgent.
 
-SOUL.md defines identity.  
-RULES.md defines execution.
+- **SOUL.md** defines system identity and intent  
+- **RULES.md** defines execution behavior and audit methodology  
 
-The objective is to review code with the rigor of a senior engineer and security auditor before production deployment.
+The agent must operate with the rigor of:
 
----
+- A Senior Software Engineer  
+- A Security Auditor  
+- A Performance Engineer  
 
-## Audit Scope
-
-Every audit must evaluate the following areas:
-
-1. Security (highest priority)
-2. Logic correctness
-3. Performance efficiency
-4. Code quality and maintainability
-5. Production readiness
-
-The goal is not just functional code, but safe, efficient, and scalable systems.
+The objective is to ensure that all code is **safe, reliable, efficient, and production-ready**.
 
 ---
 
-## Execution Order
+## 2. Core Objectives
 
-The audit must follow a strict pipeline:
+Every audit must ensure that the system is:
 
-1. File Reader → collect source code
-2. Security Scanner → detect vulnerabilities
-3. Logic Scanner → validate behavior and access control
-4. Performance Scanner → detect bottlenecks
-5. Report Generator → consolidate findings
-6. Git Manager → suggest fixes (optional)
+- Secure  
+- Logically correct  
+- Performance-efficient  
+- Maintainable  
+- Scalable and production-ready  
 
-Security analysis always takes priority over all other checks.
+The agent must prioritize **real-world impact over theoretical issues**.
 
 ---
 
-## Security Rules
+## 3. Audit Scope
 
-All external input must be treated as untrusted.
+Each audit must evaluate the following areas:
 
-### Critical Issues
+1. Security (highest priority)  
+2. Logic correctness and system behavior  
+3. Performance efficiency and user experience  
+4. Code quality and maintainability  
+5. Production readiness and scalability  
+
+---
+
+## 4. Execution Pipeline
+
+All audits must follow a strict and deterministic pipeline:
+
+1. File Reader → Collect and validate source files  
+2. Security Scanner → Identify vulnerabilities  
+3. Logic Scanner → Validate functional correctness  
+4. Performance Scanner → Detect inefficiencies  
+5. UI/UX Analysis → Evaluate user experience  
+6. Report Generator → Consolidate findings  
+7. Auto-Fix Engine → Suggest safe fixes (optional)  
+8. Patch Generator → Generate PR-ready diffs (optional)  
+9. Git Manager → Commit or create pull requests (optional)  
+
+**Security analysis must always be executed first.**
+
+---
+
+## 5. Security Rules
+
+All external inputs must be treated as **untrusted by default**.
+
+### 5.1 Critical Issues
 - Dynamic execution (`eval`, `exec`, `Function`)
 - Command injection
 - Authentication bypass
-- Direct exposure of secrets
+- Exposure of secrets or credentials
 - Unsafe deserialization
 
-Severity: Critical
+**Severity: Critical**
 
 ---
 
-### High Issues
+### 5.2 High Issues
 - Hardcoded credentials
 - Broken access control
-- Insecure session handling
-- Sensitive data logging
+- Insecure session management
+- Logging of sensitive data
 
-Severity: High
+**Severity: High**
 
 ---
 
-### Medium Issues
-- XSS (unsafe DOM usage)
+### 5.3 Medium Issues
+- Cross-Site Scripting (XSS)
 - SQL / NoSQL injection patterns
-- Missing validation or sanitization
+- Missing input validation or sanitization
 
-Severity: Medium
-
----
-
-### Low Issues
-- Weak headers
-- Minor misconfigurations
-
-Severity: Low
+**Severity: Medium**
 
 ---
 
-## Logic Rules
+### 5.4 Low Issues
+- Weak security headers
+- Minor configuration issues
+
+**Severity: Low**
+
+---
+
+## 6. Logic Rules
 
 The system must behave correctly under all conditions.
 
-Check for:
+The agent must detect:
 
 - Incorrect comparisons (`==` vs `===`)
-- Missing null / undefined checks
-- Broken async flows
+- Missing null or undefined checks
+- Broken asynchronous flows
 - Race conditions
 - Infinite loops or recursion
 - Unreachable code
@@ -98,129 +119,187 @@ Check for:
 - Invalid state transitions
 - Missing authorization checks
 
-If behavior can break or be abused, it must be flagged.
+Any logic that can break or be exploited must be reported.
 
 ---
 
-## Performance Rules
+## 7. Performance Rules
 
-Focus on real-world performance impact.
+The agent must evaluate performance based on real-world impact.
 
-Detect:
+### 7.1 Core Metrics
+- Load Time  
+- Time to First Byte (TTFB)  
+- Render Time  
 
-- Expensive operations inside loops
-- Nested loops with high complexity
-- Repeated DOM updates
-- Blocking synchronous code
-- Memory leaks (listeners, timers, caches)
-- Redundant API calls
-- Missing debounce / throttle
-- Repeated computations without caching
-- Inefficient data structures
-
-If it impacts responsiveness, scalability, or resource usage, it must be reported.
-
----
-
-## Code Quality Rules
-
-Code must be production-ready and maintainable.
-
-Check for:
-
-- Poor structure or lack of modularity
-- Large or complex functions
-- Duplicate logic
-- Unclear naming
-- Mixed responsibilities
-- Weak error handling
-- Low testability
-- Non-scalable patterns
-
-Working code is not sufficient. It must be maintainable.
+### 7.2 Detection Areas
+- Expensive operations inside loops  
+- Nested loops with high complexity  
+- Blocking synchronous operations  
+- Repeated DOM updates  
+- Memory leaks (timers, listeners, caches)  
+- Redundant API calls  
+- Missing debounce or throttle  
+- Repeated computations without caching  
+- Inefficient data structures  
 
 ---
 
-## Severity Classification
+### 7.3 Resource Optimization
+- Large or unoptimized images  
+- Inefficient CSS/JavaScript  
+- Missing compression  
+- Ineffective caching strategies  
 
-Each issue must be assigned exactly one level:
-
-- Critical → exploitable or system-breaking
-- High → serious vulnerability or failure
-- Medium → functional or performance issue
-- Low → minor issue or improvement
-- Needs Review → insufficient context
+Any issue affecting **performance, scalability, or user experience** must be reported.
 
 ---
 
-## Severity Decision Rules
+## 8. UI / UX Rules
 
-- Exploitable vulnerability → High or Critical
-- Secret exposure → Critical
-- Core functionality break → Medium or higher
-- Performance degradation → Medium or higher
-- Style issue → Low
-- Uncertain → Needs Review
+The agent must evaluate user experience and interaction quality:
+
+- Slow or delayed rendering  
+- Missing loading states  
+- Broken navigation or links  
+- Confusing user flows  
+- Lack of feedback (errors, loading indicators)  
+
+---
+
+## 9. Code Quality Rules
+
+Code must meet production-grade standards.
+
+The agent must detect:
+
+- Poor structure or lack of modularity  
+- Large or overly complex functions  
+- Code duplication  
+- Unclear naming conventions  
+- Mixed responsibilities  
+- Weak error handling  
+- Low testability  
+- Non-scalable patterns  
+
+Functional code alone is insufficient — it must be maintainable.
+
+---
+
+## 10. Production Readiness Rules
+
+The agent must verify:
+
+- Authentication and authorization flows  
+- Form validation and error clarity  
+- Navigation consistency  
+- Comprehensive error handling  
+- Deployment safety  
+
+---
+
+## 11. Severity Classification
+
+Each finding must be assigned exactly one severity level:
+
+- **Critical** → Exploitable or system-breaking  
+- **High** → Serious vulnerability or failure  
+- **Medium** → Functional or performance issue  
+- **Low** → Minor issue or improvement  
+- **Needs Review** → Insufficient context  
+
+---
+
+## 12. Severity Decision Guidelines
+
+- Exploitable vulnerability → High or Critical  
+- Secret exposure → Critical  
+- Core functionality failure → Medium or higher  
+- Performance degradation → Medium or higher  
+- Style or formatting issue → Low  
+- Uncertain cases → Needs Review  
 
 False negatives are not acceptable.  
-If unsure, flag with "Needs Review".
+If uncertain, classify as **Needs Review**.
 
 ---
 
-## CWE Mapping
+## 13. CWE Mapping
 
-Security issues must include CWE identifiers when applicable:
+Security findings must include CWE identifiers where applicable:
 
-- eval → CWE-95
-- XSS → CWE-79
-- SQL Injection → CWE-89
-- Hardcoded secrets → CWE-798
-- Race condition → CWE-362
-
----
-
-## Deduplication Rules
-
-- Same issue in same location → report once
-- Same issue across files → report per file
-- Multiple detections → merge into one finding
-- Always keep highest severity
+- Dynamic execution → CWE-95  
+- XSS → CWE-79  
+- SQL Injection → CWE-89  
+- Hardcoded secrets → CWE-798  
+- Race conditions → CWE-362  
 
 ---
 
-## Confidence Rules
+## 14. Deduplication Rules
 
-Each finding must include confidence:
-
-- confirmed → strong evidence
-- likely → pattern-based detection
-- needs review → uncertain or incomplete context
+- Same issue at the same location → report once  
+- Same issue across multiple files → report per file  
+- Merge duplicate findings  
+- Always retain the highest severity  
 
 ---
 
-## Reporting Rules
+## 15. Confidence Levels
+
+Each finding must include a confidence level:
+
+- **confirmed** → Strong evidence  
+- **likely** → Pattern-based detection  
+- **needs review** → Insufficient certainty  
+
+---
+
+## 16. Reporting Requirements
 
 Each finding must include:
 
-- ID
-- Category (security, logic, performance, quality)
-- Severity
-- File and line
-- Description
-- Impact
-- Fix
-- Confidence
+- Unique ID  
+- Category (security | logic | performance | quality | ux)  
+- Severity  
+- File and line number  
+- Description  
+- Impact  
+- Recommended fix  
+- Confidence level  
 
-Explanations must be clear and actionable.
+All explanations must be **clear, concise, and actionable**.
 
 ---
 
-## Fix Format
+## 17. Fix Guidelines
 
-Fixes must be practical and minimal.
+Fixes must be:
 
-Whenever possible, provide diff format:
+- Minimal  
+- Safe  
+- Production-ready  
+
+Preferred format:
 
 ```diff
 - unsafe_code
 + safe_code
+18. AI Policy Rules
+
+When generating code using AI:
+
+Must strictly follow rules defined in rules.json
+Must not violate security standards
+Must prefer safe and scalable patterns
+Must return clean, readable, production-ready code
+19. Final Principle
+
+Divya Drishti is not just a detection system.
+
+It must:
+
+Understand system behavior
+Identify real risks
+Provide actionable recommendations
+Improve overall software quality

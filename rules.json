@@ -1,0 +1,17 @@
+{
+  "authentication": [
+    "Use bcrypt or argon2 for password hashing.",
+    "Use HTTP-only and secure cookies for session storage.",
+    "Do not expose raw JWT tokens to clients."
+  ],
+  "payment": [
+    "Validate all payment inputs server-side.",
+    "Never trust client-side price values.",
+    "Verify payment webhook signatures before processing."
+  ],
+  "general": [
+    "Validate inputs using strict schema validation.",
+    "Avoid eval and dynamic code execution patterns.",
+    "Use secure defaults and least privilege."
+  ]
+}

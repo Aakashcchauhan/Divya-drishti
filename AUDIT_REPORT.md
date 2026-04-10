@@ -1,0 +1,3463 @@
+# Audit Report
+
+## Project Metadata
+- Project Name: Divya Drishti
+- Audit Date: 2026-04-10T05:11:46.527Z
+- Files Scanned: 34
+- Audit Version: v1.0.0
+- Target: Divya Drishti
+- Target Path: F:\hackathon\Divya Drishti
+
+## Executive Summary
+
+The system shows Critical Risk.
+
+Critical risks include:
+- Infinite loop detected (performance)
+- Infinite loop detected (performance)
+- Infinite loop detected (performance)
+
+These issues may lead to system instability, security vulnerabilities, or degraded user experience.
+Severity profile: Critical 8, High 19, Medium 104, Low 0.
+
+## Severity Breakdown
+
+| Critical | High | Medium | Low |
+|----------|------|--------|-----|
+| 8 | 19 | 104 | 0 |
+
+## Overall Risk Level
+
+- Critical Risk
+- Health Score: F
+
+## Key Findings
+
+- Security: DOM-based XSS Risk
+- Logic: Potential infinite loop
+- Performance: Infinite loop detected
+- UI/UX: Potential missing memoization for derived values
+
+## Detailed Findings
+
+#### [INFINITE_LOOP_1829] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:1829
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"while (true)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_1859] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:1859
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"pushFinding(\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"INFINITE_LOOP\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", getLine(path.node), \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Infinite loop detected\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"for (;;)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", {\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_1919] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:1919
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"while (true)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_1949] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:1949
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"pushFinding(\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"INFINITE_LOOP\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", getLine(path.node), \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Infinite loop detected\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"for (;;)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", {\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_2309] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:2309
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"while (true)\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_2339] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:2339
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"pushFinding(\\\\\\\\\\\\\\\"INFINITE_LOOP\\\\\\\\\\\\\\\", getLine(path.node), \\\\\\\\\\\\\\\"Infinite loop detected\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"for (;;)\\\\\\\\\\\\\\\", {\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_2879] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:2879
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"while (true)\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_2909] Infinite loop detected
+
+- Category: performance
+- Severity: critical
+- File: memory\performance.json:2909
+
+**Description**
+CPU exhaustion and application freeze.
+
+**Impact**
+[object Object]
+
+**Fix**
+Ensure loop has a proper exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"pushFinding(\\\"INFINITE_LOOP\\\", getLine(path.node), \\\"Infinite loop detected\\\", \\\"for (;;)\\\", {\",",
+```
+
+---
+
+#### [XSS_DOM_234] DOM-based XSS Risk
+
+- Category: security
+- Severity: high
+- File: core\ai-orchestrator.js:234
+- CWE: CWE-79
+
+**Description**
+Execution of malicious scripts in client environment.
+
+**Impact**
+Execution of malicious scripts in client environment.
+
+**Fix**
+Sanitize input or use safe rendering methods.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+if (/innerHTML\s*=|dangerouslySetInnerHTML/i.test(source) && !/sanitize|dompurify/i.test(source)) {
+```
+
+---
+
+#### [XSS_DOM_146] DOM-based XSS Risk
+
+- Category: security
+- Severity: high
+- File: skills\security-scan\security_scanner.js:146
+- CWE: CWE-79
+
+**Description**
+Execution of malicious scripts in client environment.
+
+**Impact**
+Execution of malicious scripts in client environment.
+
+**Fix**
+Sanitize input or use safe rendering methods.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+regex: /(innerHTML\s*=|dangerouslySetInnerHTML|document\.write\()/i,
+```
+
+---
+
+#### [XSS_DOM_475] DOM-based XSS Risk
+
+- Category: security
+- Severity: high
+- File: skills\security-scan\security_scanner.js:475
+- CWE: CWE-79
+
+**Description**
+Execution of malicious scripts in client environment.
+
+**Impact**
+Execution of malicious scripts in client environment.
+
+**Fix**
+Sanitize input or use safe rendering methods.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+evidence: "innerHTML = [tainted]"
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_1829] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:1829
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"while (true)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_1859] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:1859
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"pushFinding(\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"INFINITE_LOOP\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", getLine(path.node), \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Infinite loop detected\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"for (;;)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", {\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_1919] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:1919
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"while (true)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_1949] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:1949
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"pushFinding(\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"INFINITE_LOOP\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", getLine(path.node), \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Infinite loop detected\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"for (;;)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", {\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_2309] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:2309
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"while (true)\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_2339] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:2339
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"pushFinding(\\\\\\\\\\\\\\\"INFINITE_LOOP\\\\\\\\\\\\\\\", getLine(path.node), \\\\\\\\\\\\\\\"Infinite loop detected\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"for (;;)\\\\\\\\\\\\\\\", {\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_2879] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:2879
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"while (true)\\\",\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_2909] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: memory\performance.json:2909
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"pushFinding(\\\"INFINITE_LOOP\\\", getLine(path.node), \\\"Infinite loop detected\\\", \\\"for (;;)\\\", {\",",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_481] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: skills\performance-scanner\performance_scanner.js:481
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"while (true)",
+```
+
+---
+
+#### [INFINITE_LOOP_RISK_493] Potential infinite loop
+
+- Category: logic
+- Severity: high
+- File: skills\performance-scanner\performance_scanner.js:493
+
+**Description**
+Loop has no clear exit condition.
+
+**Impact**
+CPU exhaustion and application freeze.
+
+**Fix**
+Ensure loop has a valid exit condition.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+pushFinding("INFINITE_LOOP", getLine(path.node), "Infinite loop detected", "for (;;)", {
+```
+
+---
+
+#### [N_PLUS_ONE_QUERY_6] Possible N+1 query pattern
+
+- Category: logic
+- Severity: high
+- File: core\loader.js:6
+
+**Description**
+Multiple database calls inside loop causing severe slowdown.
+
+**Impact**
+[object Object]
+
+**Fix**
+Batch database calls or use optimized queries.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+performance_scanner: (await import("../skills/performance-scanner/performance_scanner.js")).performanceScan,
+```
+
+---
+
+#### [SYNC_IO_45] Synchronous or blocking I/O operation
+
+- Category: performance
+- Severity: high
+- File: skills\security-scan\security_scanner.js:45
+
+**Description**
+Blocks execution thread and reduces throughput.
+
+**Impact**
+[object Object]
+
+**Fix**
+Replace with asynchronous or non-blocking operations on hot server paths.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+const PATH_SINK_REGEX = /(readFile|readFileSync|writeFile|writeFileSync|open|createReadStream|createWriteStream|sendFile|download|unlink|readdir|stat|lstat|access|path\.join|path\.resolve|path\.normalize)/i;
+```
+
+---
+
+#### [SYNC_IO_110] Synchronous or blocking I/O operation
+
+- Category: performance
+- Severity: high
+- File: skills\security-scan\security_scanner.js:110
+
+**Description**
+Blocks execution thread and reduces throughput.
+
+**Impact**
+[object Object]
+
+**Fix**
+Replace with asynchronous or non-blocking operations on hot server paths.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+regex: /\b(exec|spawn|system|popen|execSync)\s*\(/,
+```
+
+---
+
+#### [SYNC_IO_508] Synchronous or blocking I/O operation
+
+- Category: performance
+- Severity: high
+- File: skills\security-scan\security_scanner.js:508
+
+**Description**
+Blocks execution thread and reduces throughput.
+
+**Impact**
+[object Object]
+
+**Fix**
+Replace with asynchronous or non-blocking operations on hot server paths.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+if (["exec", "execSync", "spawn", "system"].includes(calleeName) && taintedArgs) {
+```
+
+---
+
+#### [SYNC_IO_551] Synchronous or blocking I/O operation
+
+- Category: performance
+- Severity: high
+- File: skills\security-scan\security_scanner.js:551
+
+**Description**
+Blocks execution thread and reduces throughput.
+
+**Impact**
+[object Object]
+
+**Fix**
+Replace with asynchronous or non-blocking operations on hot server paths.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"readFileSync",
+```
+
+---
+
+#### [SYNC_IO_553] Synchronous or blocking I/O operation
+
+- Category: performance
+- Severity: high
+- File: skills\security-scan\security_scanner.js:553
+
+**Description**
+Blocks execution thread and reduces throughput.
+
+**Impact**
+[object Object]
+
+**Fix**
+Replace with asynchronous or non-blocking operations on hot server paths.
+
+**Confidence**
+confirmed
+
+**Code Evidence**
+```
+"writeFileSync",
+```
+
+---
+
+#### [INSECURE_RANDOM_65] Insecure Random Generator
+
+- Category: security
+- Severity: medium
+- File: skills\report-generator\report_generator.js:65
+- CWE: CWE-338
+
+**Description**
+Predictable values in security-sensitive contexts.
+
+**Impact**
+Predictable values in security-sensitive contexts.
+
+**Fix**
+Use crypto-secure random generators.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+id: finding.id || `FINDING_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+```
+
+---
+
+#### [LOOSE_EQUALITY_22] Loose equality detected
+
+- Category: logic
+- Severity: medium
+- File: core\patchGenerator.js:22
+
+**Description**
+Non-strict comparison can cause implicit type coercion leading to unpredictable behavior.
+
+**Impact**
+Incorrect conditional evaluation and logic bypass.
+
+**Fix**
+Use strict equality (===) to avoid type coercion issues.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+return codeLine.replace(/([^=!])==([^=])/g, "$1===$2");
+```
+
+---
+
+#### [LOOSE_EQUALITY_9] Loose equality detected
+
+- Category: logic
+- Severity: medium
+- File: core\autoFix.js:9
+
+**Description**
+Non-strict comparison can cause implicit type coercion leading to unpredictable behavior.
+
+**Impact**
+Incorrect conditional evaluation and logic bypass.
+
+**Fix**
+Use strict equality (===) to avoid type coercion issues.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+LOOSE_EQUALITY: (line) => line.replace(/([^=!])==([^=])/g, "$1===$2"),
+```
+
+---
+
+#### [LOOSE_EQUALITY_22] Loose equality detected
+
+- Category: logic
+- Severity: medium
+- File: skills\logic-scanner\logic_scanner.js:22
+
+**Description**
+Non-strict comparison can cause implicit type coercion leading to unpredictable behavior.
+
+**Impact**
+Incorrect conditional evaluation and logic bypass.
+
+**Fix**
+Use strict equality (===) to avoid type coercion issues.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+if (/\b(==|!=)\s*null\b|\bnull\s*(==|!=)\b/.test(normalized)) {
+```
+
+---
+
+#### [LOOSE_EQUALITY_26] Loose equality detected
+
+- Category: logic
+- Severity: medium
+- File: skills\logic-scanner\logic_scanner.js:26
+
+**Description**
+Non-strict comparison can cause implicit type coercion leading to unpredictable behavior.
+
+**Impact**
+Incorrect conditional evaluation and logic bypass.
+
+**Fix**
+Use strict equality (===) to avoid type coercion issues.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+if (/\b(==|!=)\s*undefined\b|\bundefined\s*(==|!=)\b/.test(normalized)) {
+```
+
+---
+
+#### [LOOSE_EQUALITY_31] Loose equality detected
+
+- Category: logic
+- Severity: medium
+- File: skills\logic-scanner\logic_scanner.js:31
+
+**Description**
+Non-strict comparison can cause implicit type coercion leading to unpredictable behavior.
+
+**Impact**
+Incorrect conditional evaluation and logic bypass.
+
+**Fix**
+Use strict equality (===) to avoid type coercion issues.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+if (/\btypeof\s+[^=]+\s*==\s*['"][a-zA-Z]+['"]/.test(normalized)) {
+```
+
+---
+
+#### [LOOSE_EQUALITY_44] Loose equality detected
+
+- Category: logic
+- Severity: medium
+- File: skills\logic-scanner\logic_scanner.js:44
+
+**Description**
+Non-strict comparison can cause implicit type coercion leading to unpredictable behavior.
+
+**Impact**
+Incorrect conditional evaluation and logic bypass.
+
+**Fix**
+Use strict equality (===) to avoid type coercion issues.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+regex: /(^|[^!=])==([^=]|$)/,
+```
+
+---
+
+#### [REPEATED_COMPUTATION_94] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: cli.js:94
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+`timestamp=${new Date().toISOString()}`,
+```
+
+---
+
+#### [REPEATED_COMPUTATION_190] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\report-pdf.js:190
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+<p>Generated on ${new Date().toLocaleString()}</p>
+```
+
+---
+
+#### [REPEATED_COMPUTATION_14] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\memory-manager.js:14
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+last_updated: new Date().toISOString().slice(0, 10),
+```
+
+---
+
+#### [REPEATED_COMPUTATION_100] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\memory-manager.js:100
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+last_updated: new Date().toISOString().slice(0, 10)
+```
+
+---
+
+#### [REPEATED_COMPUTATION_125] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\memory-manager.js:125
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+last_updated: new Date().toISOString()
+```
+
+---
+
+#### [REPEATED_COMPUTATION_154] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\memory-manager.js:154
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+last_seen_at: new Date().toISOString(),
+```
+
+---
+
+#### [REPEATED_COMPUTATION_165] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\memory-manager.js:165
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+last_seen_at: new Date().toISOString()
+```
+
+---
+
+#### [REPEATED_COMPUTATION_214] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\memory-manager.js:214
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+timestamp: entry.timestamp || new Date().toISOString(),
+```
+
+---
+
+#### [REPEATED_COMPUTATION_241] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: tools\memory-manager.js:241
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+last_audit_at: new Date().toISOString(),
+```
+
+---
+
+#### [REPEATED_COMPUTATION_29] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:29
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "`timestamp=${new Date().toISOString()}`,",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_59] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:59
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "<p>Generated on ${new Date().toLocaleString()}</p>",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_89] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:89
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "last_updated: new Date().toISOString().slice(0, 10),",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_119] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:119
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "last_updated: new Date().toISOString().slice(0, 10)",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_149] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:149
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "last_updated: new Date().toISOString()",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_179] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:179
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "last_seen_at: new Date().toISOString(),",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_209] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:209
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "last_seen_at: new Date().toISOString()",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_239] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:239
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "timestamp: entry.timestamp || new Date().toISOString(),",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_269] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:269
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "last_audit_at: new Date().toISOString(),",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_299] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:299
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"`timestamp=${new Date().toISOString()}`,\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_329] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:329
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"<p>Generated on ${new Date().toLocaleString()}</p>\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_359] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:359
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"last_updated: new Date().toISOString().slice(0, 10),\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_389] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:389
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"last_updated: new Date().toISOString().slice(0, 10)\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_419] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:419
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"last_updated: new Date().toISOString()\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_449] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:449
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"last_seen_at: new Date().toISOString(),\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_479] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:479
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"last_seen_at: new Date().toISOString()\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_509] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:509
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"timestamp: entry.timestamp || new Date().toISOString(),\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_539] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:539
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"last_audit_at: new Date().toISOString(),\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_569] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:569
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"`timestamp=${new Date().toISOString()}`,\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_599] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:599
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"<p>Generated on ${new Date().toLocaleString()}</p>\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_629] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:629
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"`timestamp=${new Date().toISOString()}`,\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_659] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:659
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"<p>Generated on ${new Date().toLocaleString()}</p>\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_689] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:689
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"`timestamp=${new Date().toISOString()}`,\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_719] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:719
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"<p>Generated on ${new Date().toLocaleString()}</p>\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_749] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:749
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10),\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_779] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:779
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10)\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_809] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:809
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"last_updated: new Date().toISOString()\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_839] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:839
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString(),\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_869] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:869
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString()\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_899] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:899
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"timestamp: entry.timestamp || new Date().toISOString(),\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_929] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:929
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"last_audit_at: new Date().toISOString(),\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_959] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:959
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"<p>Generated on ${new Date().toLocaleString()}</p>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_989] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:989
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"`timestamp=${new Date().toISOString()}`,\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1019] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1019
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1049] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1049
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1079] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1079
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString()\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1109] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1109
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1139] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1139
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString()\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1169] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1169
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"timestamp: entry.timestamp || new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1199] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1199
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_audit_at: new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1229] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1229
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"`timestamp=${new Date().toISOString()}`,\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1259] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1259
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"<p>Generated on ${new Date().toLocaleString()}</p>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1289] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1289
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1319] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1319
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1349] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1349
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString()\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1379] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1379
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1409] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1409
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString()\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1439] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1439
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"timestamp: entry.timestamp || new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1469] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1469
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_audit_at: new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1499] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1499
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"`timestamp=${new Date().toISOString()}`,\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1529] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1529
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1559] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1559
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString().slice(0, 10)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1589] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1589
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_updated: new Date().toISOString()\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1619] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1619
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1649] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1649
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_seen_at: new Date().toISOString()\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1679] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1679
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"timestamp: entry.timestamp || new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1709] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1709
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"last_audit_at: new Date().toISOString(),\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1739] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1739
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"<p>Generated on ${new Date().toLocaleString()}</p>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1769] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1769
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"const auditDate = new Date().toISOString();\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1799] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1799
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"const auditDate = new Date().toISOString();\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1889] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1889
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"const auditDate = new Date().toISOString();\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_1979] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:1979
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"timestamp: new Date().toISOString(),\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2009] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2009
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"\\\\\\\\\\\\\\\"evidence\\\\\\\\\\\\\\\": \\\\\\\\\\\\\\\"const auditDate = new Date().toISOString();\\\\\\\\\\\\\\\",\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2039] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2039
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"timestamp: new Date().toISOString(),\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2069] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2069
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"const auditDate = new Date().toISOString();\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2099] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2099
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"last_updated: new Date().toISOString().slice(0, 10),\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2129] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2129
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"last_updated: new Date().toISOString().slice(0, 10)\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2159] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2159
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"last_updated: new Date().toISOString()\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2189] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2189
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"last_seen_at: new Date().toISOString(),\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2219] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2219
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"last_seen_at: new Date().toISOString()\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2249] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2249
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"timestamp: entry.timestamp || new Date().toISOString(),\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2279] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2279
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"\\\\\\\"evidence\\\\\\\": \\\\\\\"last_audit_at: new Date().toISOString(),\\\\\\\",\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2369] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2369
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"last_updated: new Date().toISOString().slice(0, 10),\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2399] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2399
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"last_updated: new Date().toISOString().slice(0, 10)\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2429] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2429
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"last_updated: new Date().toISOString()\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2459] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2459
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"last_seen_at: new Date().toISOString(),\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2489] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2489
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"last_seen_at: new Date().toISOString()\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2519] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2519
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"timestamp: entry.timestamp || new Date().toISOString(),\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2549] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2549
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"last_audit_at: new Date().toISOString(),\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2579] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2579
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"timestamp: new Date().toISOString(),\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2609] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2609
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"\\\"evidence\\\": \\\"const auditDate = new Date().toISOString();\\\",\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2639] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2639
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"timestamp: new Date().toISOString(),\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2669] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2669
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "\"evidence\": \"const auditDate = new Date().toISOString();\",",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_2939] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:2939
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "timestamp: new Date().toISOString(),",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_5429] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: memory\performance.json:5429
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+"evidence": "const auditDate = new Date().toISOString();",
+```
+
+---
+
+#### [REPEATED_COMPUTATION_258] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: core\autoFix.js:258
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+timestamp: new Date().toISOString(),
+```
+
+---
+
+#### [REPEATED_COMPUTATION_213] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: skills\report-generator\report_generator.js:213
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const auditDate = new Date().toISOString();
+```
+
+---
+
+#### [MISSING_MEMO_3] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: skills\performance-scanner\performance_scanner.js:3
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const traverse = babelTraverse.default || babelTraverse;
+```
+
+---
+
+## Remediation Summary
+
+### Immediate (Critical)
+- [INFINITE_LOOP_1829] Infinite loop detected (memory\performance.json:1829)
+- [INFINITE_LOOP_1859] Infinite loop detected (memory\performance.json:1859)
+- [INFINITE_LOOP_1919] Infinite loop detected (memory\performance.json:1919)
+- [INFINITE_LOOP_1949] Infinite loop detected (memory\performance.json:1949)
+- [INFINITE_LOOP_2309] Infinite loop detected (memory\performance.json:2309)
+- [INFINITE_LOOP_2339] Infinite loop detected (memory\performance.json:2339)
+- [INFINITE_LOOP_2879] Infinite loop detected (memory\performance.json:2879)
+- [INFINITE_LOOP_2909] Infinite loop detected (memory\performance.json:2909)
+
+### High Priority
+- [XSS_DOM_234] DOM-based XSS Risk (core\ai-orchestrator.js:234)
+- [XSS_DOM_146] DOM-based XSS Risk (skills\security-scan\security_scanner.js:146)
+- [XSS_DOM_475] DOM-based XSS Risk (skills\security-scan\security_scanner.js:475)
+- [INFINITE_LOOP_RISK_1829] Potential infinite loop (memory\performance.json:1829)
+- [INFINITE_LOOP_RISK_1859] Potential infinite loop (memory\performance.json:1859)
+- [INFINITE_LOOP_RISK_1919] Potential infinite loop (memory\performance.json:1919)
+- [INFINITE_LOOP_RISK_1949] Potential infinite loop (memory\performance.json:1949)
+- [INFINITE_LOOP_RISK_2309] Potential infinite loop (memory\performance.json:2309)
+- [INFINITE_LOOP_RISK_2339] Potential infinite loop (memory\performance.json:2339)
+- [INFINITE_LOOP_RISK_2879] Potential infinite loop (memory\performance.json:2879)
+- [INFINITE_LOOP_RISK_2909] Potential infinite loop (memory\performance.json:2909)
+- [INFINITE_LOOP_RISK_481] Potential infinite loop (skills\performance-scanner\performance_scanner.js:481)
+- [INFINITE_LOOP_RISK_493] Potential infinite loop (skills\performance-scanner\performance_scanner.js:493)
+- [N_PLUS_ONE_QUERY_6] Possible N+1 query pattern (core\loader.js:6)
+- [SYNC_IO_45] Synchronous or blocking I/O operation (skills\security-scan\security_scanner.js:45)
+- [SYNC_IO_110] Synchronous or blocking I/O operation (skills\security-scan\security_scanner.js:110)
+- [SYNC_IO_508] Synchronous or blocking I/O operation (skills\security-scan\security_scanner.js:508)
+- [SYNC_IO_551] Synchronous or blocking I/O operation (skills\security-scan\security_scanner.js:551)
+- [SYNC_IO_553] Synchronous or blocking I/O operation (skills\security-scan\security_scanner.js:553)
+
+### Optimization
+- [INSECURE_RANDOM_65] Insecure Random Generator (skills\report-generator\report_generator.js:65)
+- [LOOSE_EQUALITY_22] Loose equality detected (core\patchGenerator.js:22)
+- [LOOSE_EQUALITY_9] Loose equality detected (core\autoFix.js:9)
+- [LOOSE_EQUALITY_22] Loose equality detected (skills\logic-scanner\logic_scanner.js:22)
+- [LOOSE_EQUALITY_26] Loose equality detected (skills\logic-scanner\logic_scanner.js:26)
+- [LOOSE_EQUALITY_31] Loose equality detected (skills\logic-scanner\logic_scanner.js:31)
+- [LOOSE_EQUALITY_44] Loose equality detected (skills\logic-scanner\logic_scanner.js:44)
+- [REPEATED_COMPUTATION_94] Expensive computation inside loop (cli.js:94)
+- [REPEATED_COMPUTATION_190] Expensive computation inside loop (tools\report-pdf.js:190)
+- [REPEATED_COMPUTATION_14] Expensive computation inside loop (tools\memory-manager.js:14)
+- [REPEATED_COMPUTATION_100] Expensive computation inside loop (tools\memory-manager.js:100)
+- [REPEATED_COMPUTATION_125] Expensive computation inside loop (tools\memory-manager.js:125)
+- [REPEATED_COMPUTATION_154] Expensive computation inside loop (tools\memory-manager.js:154)
+- [REPEATED_COMPUTATION_165] Expensive computation inside loop (tools\memory-manager.js:165)
+- [REPEATED_COMPUTATION_214] Expensive computation inside loop (tools\memory-manager.js:214)
+- [REPEATED_COMPUTATION_241] Expensive computation inside loop (tools\memory-manager.js:241)
+- [REPEATED_COMPUTATION_29] Expensive computation inside loop (memory\performance.json:29)
+- [REPEATED_COMPUTATION_59] Expensive computation inside loop (memory\performance.json:59)
+- [REPEATED_COMPUTATION_89] Expensive computation inside loop (memory\performance.json:89)
+- [REPEATED_COMPUTATION_119] Expensive computation inside loop (memory\performance.json:119)
+- [REPEATED_COMPUTATION_149] Expensive computation inside loop (memory\performance.json:149)
+- [REPEATED_COMPUTATION_179] Expensive computation inside loop (memory\performance.json:179)
+- [REPEATED_COMPUTATION_209] Expensive computation inside loop (memory\performance.json:209)
+- [REPEATED_COMPUTATION_239] Expensive computation inside loop (memory\performance.json:239)
+- [REPEATED_COMPUTATION_269] Expensive computation inside loop (memory\performance.json:269)
+- [REPEATED_COMPUTATION_299] Expensive computation inside loop (memory\performance.json:299)
+- [REPEATED_COMPUTATION_329] Expensive computation inside loop (memory\performance.json:329)
+- [REPEATED_COMPUTATION_359] Expensive computation inside loop (memory\performance.json:359)
+- [REPEATED_COMPUTATION_389] Expensive computation inside loop (memory\performance.json:389)
+- [REPEATED_COMPUTATION_419] Expensive computation inside loop (memory\performance.json:419)
+- [REPEATED_COMPUTATION_449] Expensive computation inside loop (memory\performance.json:449)
+- [REPEATED_COMPUTATION_479] Expensive computation inside loop (memory\performance.json:479)
+- [REPEATED_COMPUTATION_509] Expensive computation inside loop (memory\performance.json:509)
+- [REPEATED_COMPUTATION_539] Expensive computation inside loop (memory\performance.json:539)
+- [REPEATED_COMPUTATION_569] Expensive computation inside loop (memory\performance.json:569)
+- [REPEATED_COMPUTATION_599] Expensive computation inside loop (memory\performance.json:599)
+- [REPEATED_COMPUTATION_629] Expensive computation inside loop (memory\performance.json:629)
+- [REPEATED_COMPUTATION_659] Expensive computation inside loop (memory\performance.json:659)
+- [REPEATED_COMPUTATION_689] Expensive computation inside loop (memory\performance.json:689)
+- [REPEATED_COMPUTATION_719] Expensive computation inside loop (memory\performance.json:719)
+- [REPEATED_COMPUTATION_749] Expensive computation inside loop (memory\performance.json:749)
+- [REPEATED_COMPUTATION_779] Expensive computation inside loop (memory\performance.json:779)
+- [REPEATED_COMPUTATION_809] Expensive computation inside loop (memory\performance.json:809)
+- [REPEATED_COMPUTATION_839] Expensive computation inside loop (memory\performance.json:839)
+- [REPEATED_COMPUTATION_869] Expensive computation inside loop (memory\performance.json:869)
+- [REPEATED_COMPUTATION_899] Expensive computation inside loop (memory\performance.json:899)
+- [REPEATED_COMPUTATION_929] Expensive computation inside loop (memory\performance.json:929)
+- [REPEATED_COMPUTATION_959] Expensive computation inside loop (memory\performance.json:959)
+- [REPEATED_COMPUTATION_989] Expensive computation inside loop (memory\performance.json:989)
+- [REPEATED_COMPUTATION_1019] Expensive computation inside loop (memory\performance.json:1019)
+- [REPEATED_COMPUTATION_1049] Expensive computation inside loop (memory\performance.json:1049)
+- [REPEATED_COMPUTATION_1079] Expensive computation inside loop (memory\performance.json:1079)
+- [REPEATED_COMPUTATION_1109] Expensive computation inside loop (memory\performance.json:1109)
+- [REPEATED_COMPUTATION_1139] Expensive computation inside loop (memory\performance.json:1139)
+- [REPEATED_COMPUTATION_1169] Expensive computation inside loop (memory\performance.json:1169)
+- [REPEATED_COMPUTATION_1199] Expensive computation inside loop (memory\performance.json:1199)
+- [REPEATED_COMPUTATION_1229] Expensive computation inside loop (memory\performance.json:1229)
+- [REPEATED_COMPUTATION_1259] Expensive computation inside loop (memory\performance.json:1259)
+- [REPEATED_COMPUTATION_1289] Expensive computation inside loop (memory\performance.json:1289)
+- [REPEATED_COMPUTATION_1319] Expensive computation inside loop (memory\performance.json:1319)
+- [REPEATED_COMPUTATION_1349] Expensive computation inside loop (memory\performance.json:1349)
+- [REPEATED_COMPUTATION_1379] Expensive computation inside loop (memory\performance.json:1379)
+- [REPEATED_COMPUTATION_1409] Expensive computation inside loop (memory\performance.json:1409)
+- [REPEATED_COMPUTATION_1439] Expensive computation inside loop (memory\performance.json:1439)
+- [REPEATED_COMPUTATION_1469] Expensive computation inside loop (memory\performance.json:1469)
+- [REPEATED_COMPUTATION_1499] Expensive computation inside loop (memory\performance.json:1499)
+- [REPEATED_COMPUTATION_1529] Expensive computation inside loop (memory\performance.json:1529)
+- [REPEATED_COMPUTATION_1559] Expensive computation inside loop (memory\performance.json:1559)
+- [REPEATED_COMPUTATION_1589] Expensive computation inside loop (memory\performance.json:1589)
+- [REPEATED_COMPUTATION_1619] Expensive computation inside loop (memory\performance.json:1619)
+- [REPEATED_COMPUTATION_1649] Expensive computation inside loop (memory\performance.json:1649)
+- [REPEATED_COMPUTATION_1679] Expensive computation inside loop (memory\performance.json:1679)
+- [REPEATED_COMPUTATION_1709] Expensive computation inside loop (memory\performance.json:1709)
+- [REPEATED_COMPUTATION_1739] Expensive computation inside loop (memory\performance.json:1739)
+- [REPEATED_COMPUTATION_1769] Expensive computation inside loop (memory\performance.json:1769)
+- [REPEATED_COMPUTATION_1799] Expensive computation inside loop (memory\performance.json:1799)
+- [REPEATED_COMPUTATION_1889] Expensive computation inside loop (memory\performance.json:1889)
+- [REPEATED_COMPUTATION_1979] Expensive computation inside loop (memory\performance.json:1979)
+- [REPEATED_COMPUTATION_2009] Expensive computation inside loop (memory\performance.json:2009)
+- [REPEATED_COMPUTATION_2039] Expensive computation inside loop (memory\performance.json:2039)
+- [REPEATED_COMPUTATION_2069] Expensive computation inside loop (memory\performance.json:2069)
+- [REPEATED_COMPUTATION_2099] Expensive computation inside loop (memory\performance.json:2099)
+- [REPEATED_COMPUTATION_2129] Expensive computation inside loop (memory\performance.json:2129)
+- [REPEATED_COMPUTATION_2159] Expensive computation inside loop (memory\performance.json:2159)
+- [REPEATED_COMPUTATION_2189] Expensive computation inside loop (memory\performance.json:2189)
+- [REPEATED_COMPUTATION_2219] Expensive computation inside loop (memory\performance.json:2219)
+- [REPEATED_COMPUTATION_2249] Expensive computation inside loop (memory\performance.json:2249)
+- [REPEATED_COMPUTATION_2279] Expensive computation inside loop (memory\performance.json:2279)
+- [REPEATED_COMPUTATION_2369] Expensive computation inside loop (memory\performance.json:2369)
+- [REPEATED_COMPUTATION_2399] Expensive computation inside loop (memory\performance.json:2399)
+- [REPEATED_COMPUTATION_2429] Expensive computation inside loop (memory\performance.json:2429)
+- [REPEATED_COMPUTATION_2459] Expensive computation inside loop (memory\performance.json:2459)
+- [REPEATED_COMPUTATION_2489] Expensive computation inside loop (memory\performance.json:2489)
+- [REPEATED_COMPUTATION_2519] Expensive computation inside loop (memory\performance.json:2519)
+- [REPEATED_COMPUTATION_2549] Expensive computation inside loop (memory\performance.json:2549)
+- [REPEATED_COMPUTATION_2579] Expensive computation inside loop (memory\performance.json:2579)
+- [REPEATED_COMPUTATION_2609] Expensive computation inside loop (memory\performance.json:2609)
+- [REPEATED_COMPUTATION_2639] Expensive computation inside loop (memory\performance.json:2639)
+- [REPEATED_COMPUTATION_2669] Expensive computation inside loop (memory\performance.json:2669)
+- [REPEATED_COMPUTATION_2939] Expensive computation inside loop (memory\performance.json:2939)
+- [REPEATED_COMPUTATION_5429] Expensive computation inside loop (memory\performance.json:5429)
+- [REPEATED_COMPUTATION_258] Expensive computation inside loop (core\autoFix.js:258)
+- [REPEATED_COMPUTATION_213] Expensive computation inside loop (skills\report-generator\report_generator.js:213)
+- [MISSING_MEMO_3] Potential missing memoization for derived values (skills\performance-scanner\performance_scanner.js:3)
+
+## Final Verdict
+
+- Critical Risk

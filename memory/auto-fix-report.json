@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-04-09T19:33:38.006Z",
+  "totalFindings": 937,
+  "fixedCount": 10,
+  "skippedCount": 927,
+  "dryRun": true,
+  "changes": [
+    {
+      "id": "XSS_DOM_234",
+      "file": "core\\ai-orchestrator.js",
+      "line": 234,
+      "issue": "DOM-based XSS Risk",
+      "before": "  if (/innerHTML\\s*=|dangerouslySetInnerHTML/i.test(source) && !/sanitize|dompurify/i.test(source)) {",
+      "after": "  if (/textContent\\s*=|dangerouslySetInnerHTML/i.test(source) && !/sanitize|dompurify/i.test(source)) {"
+    },
+    {
+      "id": "XSS_DOM_146",
+      "file": "skills\\security-scan\\security_scanner.js",
+      "line": 146,
+      "issue": "DOM-based XSS Risk",
+      "before": "    regex: /(innerHTML\\s*=|dangerouslySetInnerHTML|document\\.write\\()/i,",
+      "after": "    regex: /(textContent\\s*=|dangerouslySetInnerHTML|document\\.write\\()/i,"
+    },
+    {
+      "id": "XSS_DOM_475",
+      "file": "skills\\security-scan\\security_scanner.js",
+      "line": 475,
+      "issue": "DOM-based XSS Risk",
+      "before": "            evidence: \"innerHTML = [tainted]\"",
+      "after": "            evidence: \"textContent = [tainted]\""
+    },
+    {
+      "id": "MISSING_AWAIT_OR_ASYNC_676",
+      "file": "skills\\performance-scanner\\performance_scanner.js",
+      "line": 676,
+      "issue": "Potential unhandled asynchronous operation",
+      "before": "      lines[cacheLine - 1] || \"fetch(...)\",",
+      "after": "      await lines[cacheLine - 1] || \"fetch(...)\","
+    },
+    {
+      "id": "SYNC_IO_45",
+      "file": "skills\\security-scan\\security_scanner.js",
+      "line": 45,
+      "issue": "Synchronous or blocking I/O operation",
+      "before": "const PATH_SINK_REGEX = /(readFile|readFileSync|writeFile|writeFileSync|open|createReadStream|createWriteStream|sendFile|download|unlink|readdir|stat|lstat|access|path\\.join|path\\.resolve|path\\.normalize)/i;",
+      "after": "const PATH_SINK_REGEX = /(readFile|await fs.promises.readFile|writeFile|writeFileSync|open|createReadStream|createWriteStream|sendFile|download|unlink|readdir|stat|lstat|access|path\\.join|path\\.resolve|path\\.normalize)/i;"
+    },
+    {
+      "id": "SYNC_IO_551",
+      "file": "skills\\security-scan\\security_scanner.js",
+      "line": 551,
+      "issue": "Synchronous or blocking I/O operation",
+      "before": "        \"readFileSync\",",
+      "after": "        \"await fs.promises.readFile\","
+    },
+    {
+      "id": "LOOSE_EQUALITY_22",
+      "file": "skills\\logic-scanner\\logic_scanner.js",
+      "line": 22,
+      "issue": "Loose equality detected",
+      "before": "    if (/\\b(==|!=)\\s*null\\b|\\bnull\\s*(==|!=)\\b/.test(normalized)) {",
+      "after": "    if (/\\b(===|!=)\\s*null\\b|\\bnull\\s*(===|!=)\\b/.test(normalized)) {"
+    },
+    {
+      "id": "LOOSE_EQUALITY_26",
+      "file": "skills\\logic-scanner\\logic_scanner.js",
+      "line": 26,
+      "issue": "Loose equality detected",
+      "before": "    if (/\\b(==|!=)\\s*undefined\\b|\\bundefined\\s*(==|!=)\\b/.test(normalized)) {",
+      "after": "    if (/\\b(===|!=)\\s*undefined\\b|\\bundefined\\s*(===|!=)\\b/.test(normalized)) {"
+    },
+    {
+      "id": "LOOSE_EQUALITY_31",
+      "file": "skills\\logic-scanner\\logic_scanner.js",
+      "line": 31,
+      "issue": "Loose equality detected",
+      "before": "    if (/\\btypeof\\s+[^=]+\\s*==\\s*['\"][a-zA-Z]+['\"]/.test(normalized)) {",
+      "after": "    if (/\\btypeof\\s+[^=]+\\s*===\\s*['\"][a-zA-Z]+['\"]/.test(normalized)) {"
+    },
+    {
+      "id": "LOOSE_EQUALITY_44",
+      "file": "skills\\logic-scanner\\logic_scanner.js",
+      "line": 44,
+      "issue": "Loose equality detected",
+      "before": "      regex: /(^|[^!=])==([^=]|$)/,",
+      "after": "      regex: /(^|[^!=])===([^=]|$)/,"
+    }
+  ]
+}

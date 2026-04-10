@@ -1,5 +1,5 @@
 ---
-name: git_manager
+name: git-manager
 description: Handles version control operations for audit workflows, ensuring safe, traceable, and privacy-compliant changes to the repository.
 capabilities:
   - repository_state_management
@@ -121,17 +121,59 @@ Rules:
 
 ## Output Format
 
-Each Git operation must return:
+Each Git operation must return a strict JSON object.
 
-### Git Operation: {command}
+### Success Schema
 
-- Status: {Success | Failed}
-- Branch: {branch_name}
-- Changes: {number_of_files}
-- Commit: {short_sha}
+```json
+{
+  "type": "git_operation",
+  "operation": "git commit",
+  "status": "success",
+  "severity": "none",
+  "data": {
+    "branch": "audit/divya-123",
+    "commit": "a1b2c3",
+    "file": "AUDIT_REPORT.md",
+    "changes": 1
+  },
+  "message": "Audit report committed successfully",
+  "meta": {
+    "pushed": true,
+    "pr": "https://github.com/org/repo/pull/123",
+    "signed": true,
+    "safeGitFlow": true,
+    "protectedBranchHandling": true,
+    "atomicCommit": true,
+    "securityValidated": true
+  }
+}
+```
 
-Message:
-> {commit_summary}
+### Failure Schema
+
+```json
+{
+  "type": "git_operation",
+  "operation": "git_manager",
+  "status": "failed",
+  "severity": "low | medium | high",
+  "category": "runtime | validation | git | network",
+  "message": "Human-readable failure summary",
+  "suggestion": "Next safe action",
+  "meta": {
+    "safeGitFlow": true,
+    "protectedBranchHandling": true,
+    "atomicCommit": true,
+    "securityValidated": true
+  }
+}
+```
+
+Notes:
+- State failures (dirty tree, no changes, missing repo) must be classified as non-critical validation outcomes.
+- Network operations (push/PR) should use retry-safe execution.
+- Sensitive file validation is mandatory before staging or commit.
 
 ---
 
@@ -171,7 +213,8 @@ Message:
 - Suggest switching to a valid branch
 
 ### Dirty Working Tree
-- Recommend stashing or cleaning before switching branches
+- Continue with selective staging when safe
+- Mark condition in metadata for traceability
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: performance_scanner
+name: performance-scanner
 description: Identifies execution bottlenecks, inefficient algorithms, memory leaks, and resource mismanagement that impact system performance and scalability.
 capabilities:
   - algorithmic_complexity_analysis
@@ -181,23 +181,40 @@ Examples:
 
 ## Output Format
 
-Each finding must follow this structure:
+Each finding must follow a strict JSON schema.
 
-### [PERFORMANCE ISSUE] — {Title}
-
-- Impact Area: {CPU | Memory | IO | UI | Bundle}
-- Severity: {Critical | High | Medium | Low}
-- Complexity: {e.g., O(n²) → O(n)}
-- File: {path}
-
----
-
-**Observation**  
-Explain the performance issue clearly.
-
----
-
-**Code Evidence**
-```javascript
-{suboptimal_code}
+```json
+{
+  "type": "performance_finding",
+  "id": "N_PLUS_ONE_QUERY_42",
+  "category": "database | io | cpu | memory | ui | event_loop | performance",
+  "severity": "critical | high | medium | low",
+  "confidence": "high | medium | low",
+  "impact": {
+    "cpu": "high | medium | low",
+    "memory": "high | medium | low",
+    "latency": "high | medium | low",
+    "io": "high | medium | low"
+  },
+  "impactScore": {
+    "cpu": 0,
+    "memory": 0,
+    "io": 0
+  },
+  "location": {
+    "file": "src/module.js",
+    "line": 42
+  },
+  "issue": "N+1 query pattern",
+  "reasoning": "Database call detected inside loop",
+  "evidence": "await db.find() inside for loop",
+  "fix": "Batch queries or use JOIN",
+  "recommendation": "Batch queries or use JOIN"
+}
 ```
+
+Notes:
+- Timer findings must be context-aware and should not mark every timer as a leak.
+- `setInterval` without cleanup should be reported as possible memory leak with low confidence unless lifecycle evidence is stronger.
+- Sync I/O should be severity-weighted by runtime context (server hot path vs script tooling).
+- Duplicate findings for the same issue and evidence must be deduplicated.

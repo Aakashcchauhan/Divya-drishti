@@ -1,0 +1,44 @@
+{
+  "authentication": [
+    "Never expose raw JWT in client-side storage. Prefer HttpOnly secure cookies.",
+    "Hash passwords using bcrypt or argon2 with strong cost factor.",
+    "Implement refresh token rotation and server-side token revocation.",
+    "Validate login inputs and enforce account lockout or rate limiting.",
+    "Store secrets only in environment variables, never in source code."
+  ],
+  "payments": [
+    "Never log full card or payment instrument details.",
+    "Validate amount and currency server-side before charging.",
+    "Use idempotency keys for payment creation APIs.",
+    "Verify webhook signatures before processing events.",
+    "Keep payment provider secrets out of frontend bundles."
+  ],
+  "api": [
+    "Validate request payloads with strict schema validation.",
+    "Authorize all sensitive endpoints with role or ownership checks.",
+    "Return sanitized error messages without stack traces.",
+    "Rate-limit public endpoints and login flows.",
+    "Use parameterized queries for all database operations."
+  ],
+  "ui": [
+    "Avoid blocking rendering with heavy synchronous work.",
+    "Use skeleton loading or progressive rendering for slow views.",
+    "Prevent DOM XSS by sanitizing untrusted HTML content.",
+    "Ensure accessible labels, roles, and keyboard navigation.",
+    "Avoid unnecessary re-renders through memoization where needed."
+  ],
+  "performance": [
+    "Avoid O(n^2) operations on hot request paths.",
+    "Use caching for expensive repeated computations.",
+    "Avoid synchronous filesystem operations in API handlers.",
+    "Batch network calls to prevent request bursts.",
+    "Use pagination for large query and response sets."
+  ],
+  "default": [
+    "Generate modular, testable, and readable code.",
+    "Do not use eval, Function constructor, or unsafe dynamic execution.",
+    "Prefer least-privilege defaults and explicit validation.",
+    "Add concise comments only where intent is non-obvious.",
+    "Output in Markdown with one code block and short explanation."
+  ]
+}

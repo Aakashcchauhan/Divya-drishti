@@ -52,6 +52,18 @@ export const runPipeline = async (config, skills, inputPath, options = {}) => {
     verbose = false
   } = options;
 
+  const executionSteps = Array.isArray(config?.execution?.pipeline)
+    ? config.execution.pipeline
+    : [
+        "file_reader",
+        "security_scanner",
+        "logic_scanner",
+        "performance_scanner",
+        "ui_skeleton_generator",
+        "report_generator",
+        "git_manager"
+      ];
+
   const targetPath = resolveAuditTarget(inputPath);
   const pipelineStart = Date.now();
 
@@ -74,7 +86,7 @@ export const runPipeline = async (config, skills, inputPath, options = {}) => {
     }
   };
 
-  for (const step of config.execution.pipeline) {
+  for (const step of executionSteps) {
     const stepStart = Date.now();
     const skill = skills[step];
 

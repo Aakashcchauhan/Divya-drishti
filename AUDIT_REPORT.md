@@ -2,8 +2,8 @@
 
 ## Project Metadata
 - Project Name: a1enterprises
-- Audit Date: 2026-04-10T06:47:47.571Z
-- Files Scanned: 162
+- Audit Date: 2026-04-10T07:57:42.667Z
+- Files Scanned: 163
 - Audit Version: v1.0.0
 - Target: a1enterprises
 - Target Path: F:\Study\5 project\a1enterprises
@@ -22,17 +22,17 @@ Severity profile: Critical 1, High 13, Medium 211, Low 0.
 
 ## Scan Diagnostics
 
-- Files discovered: 162
-- Files scannable: 162
+- Files discovered: 163
+- Files scannable: 163
 - Files skipped: 0
 - Files errored: 0
-- Total scan time: 3716 ms
+- Total scan time: 2296 ms
 
 | Scanner | Files Visited | Findings | Failures | Duration (ms) |
 |---------|---------------|----------|----------|---------------|
-| security_scanner | 162 | 29 | 0 | 658 |
-| logic_scanner | 162 | 2773 | 0 | 108 |
-| performance_scanner | 162 | 148 | 0 | 513 |
+| security_scanner | 163 | 29 | 0 | 1166 |
+| logic_scanner | 163 | 2773 | 0 | 240 |
+| performance_scanner | 163 | 148 | 0 | 755 |
 
 ## Severity Breakdown
 
@@ -75,6 +75,32 @@ confirmed
 **Code Evidence**
 ```
 while (true)
+```
+
+---
+
+#### [XSS_DOM_150] DOM-based XSS Risk
+
+- Category: security
+- Severity: high
+- File: src\components\BrandShowcase.jsx:150
+- CWE: CWE-79
+
+**Description**
+Execution of malicious scripts in client environment.
+
+**Impact**
+Execution of malicious scripts in client environment.
+
+**Fix**
+Sanitize input or use safe rendering methods.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+e.target.parentNode.innerHTML = `
 ```
 
 ---
@@ -153,32 +179,6 @@ likely
 **Code Evidence**
 ```
 dangerouslySetInnerHTML={{
-```
-
----
-
-#### [XSS_DOM_150] DOM-based XSS Risk
-
-- Category: security
-- Severity: high
-- File: src\components\BrandShowcase.jsx:150
-- CWE: CWE-79
-
-**Description**
-Execution of malicious scripts in client environment.
-
-**Impact**
-Execution of malicious scripts in client environment.
-
-**Fix**
-Sanitize input or use safe rendering methods.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-e.target.parentNode.innerHTML = `
 ```
 
 ---
@@ -284,7 +284,7 @@ const formData = await request.formData();
 
 ---
 
-#### [FINDING_1775803667569_oexj8f] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_aakb3w] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: high
@@ -304,7 +304,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_avs1nf] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_5nlc1s] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: high
@@ -324,7 +324,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_6v87f2] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_wa8z6a] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: high
@@ -344,7 +344,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_krz161] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_k2uwqq] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: high
@@ -364,7 +364,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_jb1jac] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_w87i36] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: high
@@ -591,6 +591,131 @@ export default function AmazonSearchInput({
 
 ---
 
+#### [REPEATED_COMPUTATION_48] Expensive computation inside loop
+
+- Category: logic
+- Severity: medium
+- File: src\utils\helpers.js:48
+
+**Description**
+Repeated heavy utility call detected within an iterative loop body.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+Math.min in loop
+```
+
+---
+
+#### [REPEATED_COMPUTATION_73] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\utils\avatarHelpers.js:73
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const now = new Date();
+```
+
+---
+
+#### [REPEATED_COMPUTATION_74] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\utils\avatarHelpers.js:74
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const pastDate = new Date(now.getTime() - (months * 30 * 24 * 60 * 60 * 1000));
+```
+
+---
+
+#### [REPEATED_COMPUTATION_76] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\utils\avatarHelpers.js:76
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+return new Date(randomTimestamp);
+```
+
+---
+
+#### [REPEATED_COMPUTATION_141] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\utils\avatarHelpers.js:141
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const dateObj = typeof date === 'string' ? new Date(date) : date;
+```
+
+---
+
 #### [REPEATED_COMPUTATION_10] Expensive computation inside loop
 
 - Category: performance
@@ -741,127 +866,27 @@ likely
 
 ---
 
-#### [REPEATED_COMPUTATION_48] Expensive computation inside loop
+#### [MISSING_MEMO_6] Potential missing memoization for derived values
 
-- Category: logic
+- Category: ui
 - Severity: medium
-- File: src\utils\helpers.js:48
+- File: src\context\WishlistContext.js:6
 
 **Description**
-Repeated heavy utility call detected within an iterative loop body.
+React effect and local derived assignments detected without useMemo/useCallback guards.
 
 **Impact**
 [object Object]
 
 **Fix**
-Move heavy computations outside loops or cache results.
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
 
 **Confidence**
 likely
 
 **Code Evidence**
 ```
-Math.min in loop
-```
-
----
-
-#### [REPEATED_COMPUTATION_73] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\utils\avatarHelpers.js:73
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const now = new Date();
-```
-
----
-
-#### [REPEATED_COMPUTATION_74] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\utils\avatarHelpers.js:74
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const pastDate = new Date(now.getTime() - (months * 30 * 24 * 60 * 60 * 1000));
-```
-
----
-
-#### [REPEATED_COMPUTATION_76] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\utils\avatarHelpers.js:76
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-return new Date(randomTimestamp);
-```
-
----
-
-#### [REPEATED_COMPUTATION_141] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\utils\avatarHelpers.js:141
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const dateObj = typeof date === 'string' ? new Date(date) : date;
+const WishlistContext = createContext({});
 ```
 
 ---
@@ -941,11 +966,11 @@ const AuthContext = createContext({});
 
 ---
 
-#### [MISSING_MEMO_6] Potential missing memoization for derived values
+#### [MISSING_MEMO_9] Potential missing memoization for derived values
 
 - Category: ui
 - Severity: medium
-- File: src\context\WishlistContext.js:6
+- File: src\components\UserRoute.jsx:9
 
 **Description**
 React effect and local derived assignments detected without useMemo/useCallback guards.
@@ -961,7 +986,7 @@ likely
 
 **Code Evidence**
 ```
-const WishlistContext = createContext({});
+const router = useRouter();
 ```
 
 ---
@@ -1016,106 +1041,6 @@ const fetchOverallStats = async () => {
 
 ---
 
-#### [MISSING_MEMO_9] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\components\UserRoute.jsx:9
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const router = useRouter();
-```
-
----
-
-#### [REPEATED_COMPUTATION_35] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\sitemap.js:35
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-lastModified: new Date(),
-```
-
----
-
-#### [REPEATED_COMPUTATION_133] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\sitemap.js:133
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-lastModified: new Date(product.updatedAt || product.createdAt || Date.now()),
-```
-
----
-
-#### [REPEATED_COMPUTATION_140] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\layout.js:140
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-gtag('js', new Date());
-```
-
----
-
 #### [MISSING_MEMO_7] Potential missing memoization for derived values
 
 - Category: ui
@@ -1141,11 +1066,11 @@ const sectionRef = useRef(null);
 
 ---
 
-#### [MISSING_MEMO_16] Potential missing memoization for derived values
+#### [MISSING_MEMO_9] Potential missing memoization for derived values
 
 - Category: ui
 - Severity: medium
-- File: src\components\ProductSchema.jsx:16
+- File: src\components\PublicRoute.jsx:9
 
 **Description**
 React effect and local derived assignments detected without useMemo/useCallback guards.
@@ -1161,7 +1086,7 @@ likely
 
 **Code Evidence**
 ```
-const schema = {
+const router = useRouter();
 ```
 
 ---
@@ -1216,27 +1141,27 @@ const res = await fetch('/api/products/types');
 
 ---
 
-#### [MISSING_MEMO_9] Potential missing memoization for derived values
+#### [CACHE_OPPORTUNITY_76] Cache opportunity for repeated external calls
 
-- Category: ui
+- Category: logic
 - Severity: medium
-- File: src\components\PublicRoute.jsx:9
+- File: src\components\ProductSlider.jsx:76
 
 **Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
+Multiple outbound calls were detected without visible cache/memoization layer.
 
 **Impact**
 [object Object]
 
 **Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
 
 **Confidence**
 likely
 
 **Code Evidence**
 ```
-const router = useRouter();
+const settingsResponse = await fetch('/api/admin/homepage-settings')
 ```
 
 ---
@@ -1287,6 +1212,56 @@ likely
 **Code Evidence**
 ```
 const response = await fetch(`/api/reviews?${params}`);
+```
+
+---
+
+#### [MISSING_MEMO_16] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\components\ProductSchema.jsx:16
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const schema = {
+```
+
+---
+
+#### [MISSING_MEMO_9] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\components\PrivateRoute.jsx:9
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const router = useRouter();
 ```
 
 ---
@@ -1366,11 +1341,11 @@ fetch(`/api/orders/email/${encodeURIComponent(email)}`)
 
 ---
 
-#### [MISSING_MEMO_9] Potential missing memoization for derived values
+#### [MISSING_MEMO_17] Potential missing memoization for derived values
 
 - Category: ui
 - Severity: medium
-- File: src\components\PrivateRoute.jsx:9
+- File: src\components\Navbar.jsx:17
 
 **Description**
 React effect and local derived assignments detected without useMemo/useCallback guards.
@@ -1412,31 +1387,6 @@ likely
 **Code Evidence**
 ```
 const slides = [
-```
-
----
-
-#### [CACHE_OPPORTUNITY_76] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\components\ProductSlider.jsx:76
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const settingsResponse = await fetch('/api/admin/homepage-settings')
 ```
 
 ---
@@ -1487,31 +1437,6 @@ likely
 **Code Evidence**
 ```
 const schema = {
-```
-
----
-
-#### [MISSING_MEMO_17] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\components\Navbar.jsx:17
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const router = useRouter();
 ```
 
 ---
@@ -1591,11 +1516,11 @@ const inputRef = useRef(null);
 
 ---
 
-#### [REPEATED_COMPUTATION_33] Expensive computation inside loop
+#### [REPEATED_COMPUTATION_35] Expensive computation inside loop
 
 - Category: performance
 - Severity: medium
-- File: src\app\api\test-email\route.js:33
+- File: src\app\sitemap.js:35
 
 **Description**
 Repeated calculations degrade performance.
@@ -1611,16 +1536,16 @@ likely
 
 **Code Evidence**
 ```
-createdAt: new Date(),
+lastModified: new Date(),
 ```
 
 ---
 
-#### [REPEATED_COMPUTATION_34] Expensive computation inside loop
+#### [REPEATED_COMPUTATION_133] Expensive computation inside loop
 
 - Category: performance
 - Severity: medium
-- File: src\app\api\test-email\route.js:34
+- File: src\app\sitemap.js:133
 
 **Description**
 Repeated calculations degrade performance.
@@ -1636,16 +1561,41 @@ likely
 
 **Code Evidence**
 ```
-orderDate: new Date(),
+lastModified: new Date(product.updatedAt || product.createdAt || Date.now()),
 ```
 
 ---
 
-#### [MISSING_MEMO_14] Potential missing memoization for derived values
+#### [REPEATED_COMPUTATION_140] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\app\layout.js:140
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+gtag('js', new Date());
+```
+
+---
+
+#### [MISSING_MEMO_22] Potential missing memoization for derived values
 
 - Category: ui
 - Severity: medium
-- File: src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:14
+- File: src\components\Card\Enquiry.jsx:22
 
 **Description**
 React effect and local derived assignments detected without useMemo/useCallback guards.
@@ -1661,7 +1611,32 @@ likely
 
 **Code Evidence**
 ```
-const fetchProducts = async () => {
+const fetchUserProfile = async () => {
+```
+
+---
+
+#### [CACHE_OPPORTUNITY_26] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\components\Card\Enquiry.jsx:26
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const res = await fetch(`/api/user/${encodeURIComponent(user.email)}`, {
 ```
 
 ---
@@ -1766,56 +1741,6 @@ fetch('/api/admin/dashboard/stats'),
 
 ---
 
-#### [MISSING_MEMO_58] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\components\Admin\DashboardStats.jsx:58
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const fetchDashboardStats = async () => {
-```
-
----
-
-#### [CACHE_OPPORTUNITY_61] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\components\Admin\DashboardStats.jsx:61
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const response = await fetch('/api/admin/dashboard/stats');
-```
-
----
-
 #### [API_CALL_BURST_75] Multiple API calls detected
 
 - Category: logic
@@ -1887,6 +1812,56 @@ likely
 **Code Evidence**
 ```
 const response = await fetch('/api/products/types');
+```
+
+---
+
+#### [MISSING_MEMO_58] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\components\Admin\DashboardStats.jsx:58
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const fetchDashboardStats = async () => {
+```
+
+---
+
+#### [CACHE_OPPORTUNITY_61] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\components\Admin\DashboardStats.jsx:61
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const response = await fetch('/api/admin/dashboard/stats');
 ```
 
 ---
@@ -1966,11 +1941,11 @@ const response = await fetch('/api/products/types');
 
 ---
 
-#### [MISSING_MEMO_22] Potential missing memoization for derived values
+#### [MISSING_MEMO_14] Potential missing memoization for derived values
 
 - Category: ui
 - Severity: medium
-- File: src\components\Card\Enquiry.jsx:22
+- File: src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:14
 
 **Description**
 React effect and local derived assignments detected without useMemo/useCallback guards.
@@ -1986,32 +1961,82 @@ likely
 
 **Code Evidence**
 ```
-const fetchUserProfile = async () => {
+const fetchProducts = async () => {
 ```
 
 ---
 
-#### [CACHE_OPPORTUNITY_26] Cache opportunity for repeated external calls
+#### [REPEATED_COMPUTATION_33] Expensive computation inside loop
 
-- Category: logic
+- Category: performance
 - Severity: medium
-- File: src\components\Card\Enquiry.jsx:26
+- File: src\app\api\test-email\route.js:33
 
 **Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
+Repeated calculations degrade performance.
 
 **Impact**
 [object Object]
 
 **Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+Move heavy computations outside loops or cache results.
 
 **Confidence**
 likely
 
 **Code Evidence**
 ```
-const res = await fetch(`/api/user/${encodeURIComponent(user.email)}`, {
+createdAt: new Date(),
+```
+
+---
+
+#### [REPEATED_COMPUTATION_34] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\app\api\test-email\route.js:34
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+orderDate: new Date(),
+```
+
+---
+
+#### [REPEATED_COMPUTATION_47] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\app\api\notifications\route.js:47
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+existingNotification.createdAt = new Date();
 ```
 
 ---
@@ -2091,36 +2116,11 @@ timestamp: new Date().toISOString(),
 
 ---
 
-#### [REPEATED_COMPUTATION_47] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\api\notifications\route.js:47
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-existingNotification.createdAt = new Date();
-```
-
----
-
-#### [MISSING_MEMO_19] Potential missing memoization for derived values
+#### [MISSING_MEMO_13] Potential missing memoization for derived values
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\users\page.js:19
+- File: src\app\admin\payments\page.jsx:13
 
 **Description**
 React effect and local derived assignments detected without useMemo/useCallback guards.
@@ -2136,82 +2136,7 @@ likely
 
 **Code Evidence**
 ```
-const fetchUsers = async () => {
-```
-
----
-
-#### [API_CALL_BURST_52] Multiple API calls detected
-
-- Category: logic
-- Severity: medium
-- File: src\app\admin\products\page.jsx:52
-
-**Description**
-High count of outbound API invocations suggests batching opportunity.
-
-**Impact**
-[object Object]
-
-**Fix**
-Batch API calls or use a bulk endpoint to reduce network overhead.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-Detected 4 API call sites in this file
-```
-
----
-
-#### [MISSING_MEMO_15] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\products\page.jsx:15
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const router = useRouter();
-```
-
----
-
-#### [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\app\admin\products\page.jsx:52
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const response = await fetch('/api/products');
+const fetchPaymentStats = async () => {
 ```
 
 ---
@@ -2291,6 +2216,106 @@ const response = await fetch("/api/orders");
 
 ---
 
+#### [API_CALL_BURST_52] Multiple API calls detected
+
+- Category: logic
+- Severity: medium
+- File: src\app\admin\products\page.jsx:52
+
+**Description**
+High count of outbound API invocations suggests batching opportunity.
+
+**Impact**
+[object Object]
+
+**Fix**
+Batch API calls or use a bulk endpoint to reduce network overhead.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+Detected 4 API call sites in this file
+```
+
+---
+
+#### [MISSING_MEMO_15] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\products\page.jsx:15
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const router = useRouter();
+```
+
+---
+
+#### [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\app\admin\products\page.jsx:52
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const response = await fetch('/api/products');
+```
+
+---
+
+#### [MISSING_MEMO_19] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\users\page.js:19
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const fetchUsers = async () => {
+```
+
+---
+
 #### [MISSING_MEMO_20] Potential missing memoization for derived values
 
 - Category: ui
@@ -2341,31 +2366,6 @@ const response = await fetch('/api/products');
 
 ---
 
-#### [MISSING_MEMO_13] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\payments\page.jsx:13
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const fetchPaymentStats = async () => {
-```
-
----
-
 #### [MISSING_MEMO_23] Potential missing memoization for derived values
 
 - Category: ui
@@ -2412,181 +2412,6 @@ likely
 **Code Evidence**
 ```
 const res = await fetch('/api/products/types');
-```
-
----
-
-#### [REPEATED_COMPUTATION_172] Expensive computation inside loop
-
-- Category: logic
-- Severity: medium
-- File: src\app\api\products\generate-ai\route.js:172
-
-**Description**
-Repeated heavy utility call detected within an iterative loop body.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-JSON.stringify in loop
-```
-
----
-
-#### [REPEATED_COMPUTATION_215] Expensive computation inside loop
-
-- Category: logic
-- Severity: medium
-- File: src\app\api\products\generate-ai\route.js:215
-
-**Description**
-Repeated heavy utility call detected within an iterative loop body.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-JSON.stringify in loop
-```
-
----
-
-#### [EVENT_LOOP_BLOCKING_281] Heavy JSON parsing may block event loop
-
-- Category: logic
-- Severity: medium
-- File: src\app\api\products\generate-ai\route.js:281
-
-**Description**
-File size is large and synchronous JSON parsing appears in code path.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move large JSON parsing to background worker or chunk processing.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-JSON.parse on potentially large input
-```
-
----
-
-#### [MISSING_MEMO_22] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\return-replacement\page.jsx:22
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const searchParams = useSearchParams();
-```
-
----
-
-#### [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\app\(public)\return-replacement\page.jsx:52
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-fetch(`/api/orders/${orderId}`)
-```
-
----
-
-#### [MISSING_MEMO_20] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\order-cancellation\page.jsx:20
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const searchParams = useSearchParams();
-```
-
----
-
-#### [CACHE_OPPORTUNITY_37] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\app\(public)\order-cancellation\page.jsx:37
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-fetch(`/api/orders/${orderId}`)
 ```
 
 ---
@@ -2666,6 +2491,56 @@ const res = await fetch(`/api/user/${encodeURIComponent(user.email)}`, {
 
 ---
 
+#### [MISSING_MEMO_22] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\return-replacement\page.jsx:22
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const searchParams = useSearchParams();
+```
+
+---
+
+#### [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\app\(public)\return-replacement\page.jsx:52
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+fetch(`/api/orders/${orderId}`)
+```
+
+---
+
 #### [MISSING_MEMO_11] Potential missing memoization for derived values
 
 - Category: ui
@@ -2691,11 +2566,11 @@ const searchParams = useSearchParams();
 
 ---
 
-#### [MISSING_MEMO_12] Potential missing memoization for derived values
+#### [MISSING_MEMO_20] Potential missing memoization for derived values
 
 - Category: ui
 - Severity: medium
-- File: src\app\(public)\cart\page.jsx:12
+- File: src\app\(public)\order-cancellation\page.jsx:20
 
 **Description**
 React effect and local derived assignments detected without useMemo/useCallback guards.
@@ -2711,7 +2586,82 @@ likely
 
 **Code Evidence**
 ```
-const router = useRouter();
+const searchParams = useSearchParams();
+```
+
+---
+
+#### [CACHE_OPPORTUNITY_37] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\app\(public)\order-cancellation\page.jsx:37
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+fetch(`/api/orders/${orderId}`)
+```
+
+---
+
+#### [MISSING_MEMO_20] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\contact-us\ContactPageClient.jsx:20
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const fetchUserProfile = async () => {
+```
+
+---
+
+#### [CACHE_OPPORTUNITY_24] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\app\(public)\contact-us\ContactPageClient.jsx:24
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const res = await fetch(`/api/user/${encodeURIComponent(user.email)}`, {
 ```
 
 ---
@@ -2791,6 +2741,106 @@ return fetch(`/api/user/${encodeURIComponent(user.email)}`, {
 
 ---
 
+#### [MISSING_MEMO_12] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\cart\page.jsx:12
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const router = useRouter();
+```
+
+---
+
+#### [REPEATED_COMPUTATION_172] Expensive computation inside loop
+
+- Category: logic
+- Severity: medium
+- File: src\app\api\products\generate-ai\route.js:172
+
+**Description**
+Repeated heavy utility call detected within an iterative loop body.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+JSON.stringify in loop
+```
+
+---
+
+#### [REPEATED_COMPUTATION_215] Expensive computation inside loop
+
+- Category: logic
+- Severity: medium
+- File: src\app\api\products\generate-ai\route.js:215
+
+**Description**
+Repeated heavy utility call detected within an iterative loop body.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+JSON.stringify in loop
+```
+
+---
+
+#### [EVENT_LOOP_BLOCKING_281] Heavy JSON parsing may block event loop
+
+- Category: logic
+- Severity: medium
+- File: src\app\api\products\generate-ai\route.js:281
+
+**Description**
+File size is large and synchronous JSON parsing appears in code path.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move large JSON parsing to background worker or chunk processing.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+JSON.parse on potentially large input
+```
+
+---
+
 #### [REPEATED_COMPUTATION_71] Expensive computation inside loop
 
 - Category: performance
@@ -2866,106 +2916,6 @@ order.updatedAt = new Date();
 
 ---
 
-#### [REPEATED_COMPUTATION_60] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\api\admin\update-banner\route.js:60
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-updatedAt: new Date(),
-```
-
----
-
-#### [MISSING_MEMO_20] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\contact-us\ContactPageClient.jsx:20
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const fetchUserProfile = async () => {
-```
-
----
-
-#### [CACHE_OPPORTUNITY_24] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\app\(public)\contact-us\ContactPageClient.jsx:24
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const res = await fetch(`/api/user/${encodeURIComponent(user.email)}`, {
-```
-
----
-
-#### [REPEATED_COMPUTATION_195] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\api\admin\export-products\route.js:195
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const filename = `google-shopping-feed-${new Date().toISOString().split('T')[0]}.xlsx`;
-```
-
----
-
 #### [REPEATED_COMPUTATION_35] Expensive computation inside loop
 
 - Category: performance
@@ -3016,11 +2966,11 @@ const startDate = new Date();
 
 ---
 
-#### [REPEATED_COMPUTATION_74] Expensive computation inside loop
+#### [REPEATED_COMPUTATION_60] Expensive computation inside loop
 
 - Category: performance
 - Severity: medium
-- File: src\app\api\admin\homepage-settings\route.js:74
+- File: src\app\api\admin\update-banner\route.js:60
 
 **Description**
 Repeated calculations degrade performance.
@@ -3036,132 +2986,7 @@ likely
 
 **Code Evidence**
 ```
-updatedAt: new Date()
-```
-
----
-
-#### [MISSING_MEMO_8] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\orders\shipped\page.jsx:8
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const router = useRouter();
-```
-
----
-
-#### [MISSING_MEMO_8] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\orders\returns\page.jsx:8
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const router = useRouter();
-```
-
----
-
-#### [MISSING_MEMO_15] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\payments\transactions\page.jsx:15
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const fetchTransactions = async () => {
-```
-
----
-
-#### [MISSING_MEMO_9] Potential missing memoization for derived values
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\orders\pending\page.jsx:9
-
-**Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
-
-**Impact**
-[object Object]
-
-**Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const router = useRouter();
-```
-
----
-
-#### [CACHE_OPPORTUNITY_21] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\app\admin\orders\pending\page.jsx:21
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const response = await fetch("/api/orders");
+updatedAt: new Date(),
 ```
 
 ---
@@ -3191,27 +3016,52 @@ updatedAt: new Date(),
 
 ---
 
-#### [MISSING_MEMO_14] Potential missing memoization for derived values
+#### [REPEATED_COMPUTATION_74] Expensive computation inside loop
 
-- Category: ui
+- Category: performance
 - Severity: medium
-- File: src\app\admin\payments\refunds\page.jsx:14
+- File: src\app\api\admin\homepage-settings\route.js:74
 
 **Description**
-React effect and local derived assignments detected without useMemo/useCallback guards.
+Repeated calculations degrade performance.
 
 **Impact**
 [object Object]
 
 **Fix**
-Memoize derived computations with useMemo/useCallback when dependencies are stable.
+Move heavy computations outside loops or cache results.
 
 **Confidence**
 likely
 
 **Code Evidence**
 ```
-const fetchRefunds = async () => {
+updatedAt: new Date()
+```
+
+---
+
+#### [REPEATED_COMPUTATION_195] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\app\api\admin\export-products\route.js:195
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const filename = `google-shopping-feed-${new Date().toISOString().split('T')[0]}.xlsx`;
 ```
 
 ---
@@ -3266,6 +3116,181 @@ const response = await fetch('/api/products');
 
 ---
 
+#### [CACHE_OPPORTUNITY_46] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\app\admin\products\inventory\page.jsx:46
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const response = await fetch("/api/admin/products", {
+```
+
+---
+
+#### [MISSING_MEMO_15] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\payments\transactions\page.jsx:15
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const fetchTransactions = async () => {
+```
+
+---
+
+#### [MISSING_MEMO_14] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\payments\refunds\page.jsx:14
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const fetchRefunds = async () => {
+```
+
+---
+
+#### [MISSING_MEMO_8] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\orders\shipped\page.jsx:8
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const router = useRouter();
+```
+
+---
+
+#### [MISSING_MEMO_8] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\orders\returns\page.jsx:8
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const router = useRouter();
+```
+
+---
+
+#### [MISSING_MEMO_9] Potential missing memoization for derived values
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\orders\pending\page.jsx:9
+
+**Description**
+React effect and local derived assignments detected without useMemo/useCallback guards.
+
+**Impact**
+[object Object]
+
+**Fix**
+Memoize derived computations with useMemo/useCallback when dependencies are stable.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const router = useRouter();
+```
+
+---
+
+#### [CACHE_OPPORTUNITY_21] Cache opportunity for repeated external calls
+
+- Category: logic
+- Severity: medium
+- File: src\app\admin\orders\pending\page.jsx:21
+
+**Description**
+Multiple outbound calls were detected without visible cache/memoization layer.
+
+**Impact**
+[object Object]
+
+**Fix**
+Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const response = await fetch("/api/orders");
+```
+
+---
+
 #### [REPEATED_COMPUTATION_41] Expensive computation inside loop
 
 - Category: performance
@@ -3316,56 +3341,6 @@ order.returnRequestedAt = new Date();
 
 ---
 
-#### [CACHE_OPPORTUNITY_46] Cache opportunity for repeated external calls
-
-- Category: logic
-- Severity: medium
-- File: src\app\admin\products\inventory\page.jsx:46
-
-**Description**
-Multiple outbound calls were detected without visible cache/memoization layer.
-
-**Impact**
-[object Object]
-
-**Fix**
-Add request-level caching (HTTP cache, memoization, or Redis) for repeated external calls.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const response = await fetch("/api/admin/products", {
-```
-
----
-
-#### [REPEATED_COMPUTATION_37] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\api\orders\[id]\confirm\route.js:37
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-order.confirmedAt = new Date();
-```
-
----
-
 #### [REPEATED_COMPUTATION_41] Expensive computation inside loop
 
 - Category: performance
@@ -3412,6 +3387,81 @@ likely
 **Code Evidence**
 ```
 order.replacementRequestedAt = new Date();
+```
+
+---
+
+#### [REPEATED_COMPUTATION_37] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\app\api\orders\[id]\confirm\route.js:37
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+order.confirmedAt = new Date();
+```
+
+---
+
+#### [REPEATED_COMPUTATION_44] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\app\api\orders\[id]\cancel\route.js:44
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+const orderAge = Date.now() - new Date(order.createdAt).getTime();
+```
+
+---
+
+#### [REPEATED_COMPUTATION_70] Expensive computation inside loop
+
+- Category: performance
+- Severity: medium
+- File: src\app\api\orders\[id]\cancel\route.js:70
+
+**Description**
+Repeated calculations degrade performance.
+
+**Impact**
+[object Object]
+
+**Fix**
+Move heavy computations outside loops or cache results.
+
+**Confidence**
+likely
+
+**Code Evidence**
+```
+order.cancelledAt = new Date();
 ```
 
 ---
@@ -3841,56 +3891,6 @@ o => new Date(o.createdAt) >= last30Days
 
 ---
 
-#### [REPEATED_COMPUTATION_44] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\api\orders\[id]\cancel\route.js:44
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-const orderAge = Date.now() - new Date(order.createdAt).getTime();
-```
-
----
-
-#### [REPEATED_COMPUTATION_70] Expensive computation inside loop
-
-- Category: performance
-- Severity: medium
-- File: src\app\api\orders\[id]\cancel\route.js:70
-
-**Description**
-Repeated calculations degrade performance.
-
-**Impact**
-[object Object]
-
-**Fix**
-Move heavy computations outside loops or cache results.
-
-**Confidence**
-likely
-
-**Code Evidence**
-```
-order.cancelledAt = new Date();
-```
-
----
-
 #### [REPEATED_COMPUTATION_9] Expensive computation inside loop
 
 - Category: performance
@@ -3941,107 +3941,7 @@ const last30Days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
 ---
 
-#### [FINDING_1775803667568_9avvae] UI skeleton opportunity detected (simple layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\ToastContainer.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\ToastContainer.jsx with simple structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_ts2a5v] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Toast.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Toast.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_o0r4vq] UI skeleton opportunity detected (simple layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\not-found.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\not-found.jsx with simple structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_5b7jd9] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\TestimonialsCarousel.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\TestimonialsCarousel.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_r5se4e] UI skeleton opportunity detected (grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\SerpPreview.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\SerpPreview.jsx with grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_bgufeq] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_mtjujj] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
@@ -4061,14 +3961,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_jwznv9] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_ark2th] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\Review.jsx:N/A
+- File: src\components\Toast.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\Review.jsx with complex-grid structure.
+Detected UI blocks in src\components\Toast.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4081,7 +3981,47 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_zse6pi] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_b629fl] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\TestimonialsCarousel.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\TestimonialsCarousel.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_t01uoh] UI skeleton opportunity detected (grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\SerpPreview.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\SerpPreview.jsx with grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_vda2rv] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4101,14 +4041,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_1xsrix] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_2ysiwk] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\Providers.jsx:N/A
+- File: src\components\ToastContainer.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\Providers.jsx with simple structure.
+Detected UI blocks in src\components\ToastContainer.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4121,14 +4061,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_0ad3c5] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_afe00l] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\ProductTypeBanners.jsx:N/A
+- File: src\components\Review.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\ProductTypeBanners.jsx with simple structure.
+Detected UI blocks in src\components\Review.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4141,7 +4081,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_55uaa7] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_633vd7] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
@@ -4161,14 +4101,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_wtwbdi] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_2cz0w9] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\ProductReviews.jsx:N/A
+- File: src\components\Providers.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\ProductReviews.jsx with complex-grid structure.
+Detected UI blocks in src\components\Providers.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4181,14 +4121,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_6jn3br] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_dc5qji] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\PlaceholderImage.jsx:N/A
+- File: src\components\ProductTypeBanners.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\PlaceholderImage.jsx with simple structure.
+Detected UI blocks in src\components\ProductTypeBanners.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4201,67 +4141,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_m69h2g] UI skeleton opportunity detected (grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\footer.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\footer.jsx with grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_a3r6i3] UI skeleton opportunity detected (simple layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\PrivateRoute.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\PrivateRoute.jsx with simple structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_zrjhv4] UI skeleton opportunity detected (grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\HeroSlider.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\HeroSlider.jsx with grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_bf14zx] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_6mrcoe] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4281,14 +4161,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_atchdr] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_xm3pqz] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\CollectionSection.jsx:N/A
+- File: src\components\ProductReviews.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\CollectionSection.jsx with simple structure.
+Detected UI blocks in src\components\ProductReviews.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4301,7 +4181,47 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_cqjwic] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_60d2dg] UI skeleton opportunity detected (simple layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\PlaceholderImage.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\PlaceholderImage.jsx with simple structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_emjvet] UI skeleton opportunity detected (simple layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\PrivateRoute.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\PrivateRoute.jsx with simple structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_b2hj37] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4321,7 +4241,47 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_kn1f46] UI skeleton opportunity detected (grid layout)
+#### [FINDING_1775807862663_c7u208] UI skeleton opportunity detected (grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\HeroSlider.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\HeroSlider.jsx with grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_8lcdel] UI skeleton opportunity detected (grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\footer.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\footer.jsx with grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_n5ttrp] UI skeleton opportunity detected (grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4341,14 +4301,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_705z6y] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_uykf47] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\BestCollection1.jsx:N/A
+- File: src\components\CollectionSection.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\BestCollection1.jsx with complex-grid structure.
+Detected UI blocks in src\components\CollectionSection.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4361,7 +4321,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_9xjjer] UI skeleton opportunity detected (grid layout)
+#### [FINDING_1775807862663_23u8p8] UI skeleton opportunity detected (grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4381,14 +4341,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_ikj8t0] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_jjr5d8] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\AmazonSearchInput.jsx:N/A
+- File: src\components\BestCollection1.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\AmazonSearchInput.jsx with complex-grid structure.
+Detected UI blocks in src\components\BestCollection1.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4401,47 +4361,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_8m1ytc] UI skeleton opportunity detected (simple layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\BannerUpload.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\BannerUpload.jsx with simple structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_ph2qq4] UI skeleton opportunity detected (simple layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\BannerSlot.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\BannerSlot.jsx with simple structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_cpfmlw] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_vyj0n1] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
@@ -4461,14 +4381,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_qfdt4p] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_hkgeal] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:N/A
+- File: src\components\BannerUpload.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\(public)\FeaturedProductsSwitcherWrapper.jsx with simple structure.
+Detected UI blocks in src\components\BannerUpload.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4481,14 +4401,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_yc5hxp] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_xi3ih4] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\Admin\ProtectedRoute.jsx:N/A
+- File: src\components\BannerSlot.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\Admin\ProtectedRoute.jsx with complex-grid structure.
+Detected UI blocks in src\components\BannerSlot.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4501,14 +4421,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_um6t7v] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_j8h3mp] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\Admin\AdminSidebar.jsx:N/A
+- File: src\components\AmazonSearchInput.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\Admin\AdminSidebar.jsx with complex-grid structure.
+Detected UI blocks in src\components\AmazonSearchInput.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4521,14 +4441,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_shul3e] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_clqmhr] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\Admin\ModernDashboard.jsx:N/A
+- File: src\app\not-found.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\Admin\ModernDashboard.jsx with complex-grid structure.
+Detected UI blocks in src\app\not-found.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4541,47 +4461,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_4whj0j] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Admin\ProductTable.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Admin\ProductTable.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_tmvqjb] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Admin\DashboardStats.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Admin\DashboardStats.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_pawqr6] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_23jjsq] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4601,107 +4481,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_kp90qr] UI skeleton opportunity detected (simple layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Admin\AdminHeader.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Admin\AdminHeader.jsx with simple structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_h8vqtx] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Admin\EditProductForm.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Admin\EditProductForm.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_w3xkgx] UI skeleton opportunity detected (grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Card\NotifyForm.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Card\NotifyForm.jsx with grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_zarmlh] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Admin\AddProductForm.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Admin\AddProductForm.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_jdfx6s] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\components\Card\Enquiry.jsx:N/A
-
-**Description**
-Detected UI blocks in src\components\Card\Enquiry.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_0grned] UI skeleton opportunity detected (grid layout)
+#### [FINDING_1775807862663_eciw22] UI skeleton opportunity detected (grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4721,14 +4501,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_g2b8q9] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_14gbth] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\components\Card\CollectionCard.jsx:N/A
+- File: src\components\Card\Enquiry.jsx:N/A
 
 **Description**
-Detected UI blocks in src\components\Card\CollectionCard.jsx with simple structure.
+Detected UI blocks in src\components\Card\Enquiry.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4741,7 +4521,27 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_aarjeg] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_ka9vng] UI skeleton opportunity detected (grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\Card\NotifyForm.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\Card\NotifyForm.jsx with grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_hkk90n] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4761,14 +4561,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_xy07lk] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_d7x67g] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\products\page.jsx:N/A
+- File: src\components\Card\CollectionCard.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\admin\products\page.jsx with complex-grid structure.
+Detected UI blocks in src\components\Card\CollectionCard.jsx with simple structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4781,14 +4581,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_ucydhn] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_s20s5n] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\orders\page.jsx:N/A
+- File: src\components\Admin\ProtectedRoute.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\admin\orders\page.jsx with complex-grid structure.
+Detected UI blocks in src\components\Admin\ProtectedRoute.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4801,14 +4601,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_5re3k7] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_6bz4kv] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\homepage\page.jsx:N/A
+- File: src\components\Admin\ProductTable.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\admin\homepage\page.jsx with complex-grid structure.
+Detected UI blocks in src\components\Admin\ProductTable.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4821,7 +4621,147 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_3vowki] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_59nk6o] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\Admin\ModernDashboard.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\Admin\ModernDashboard.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_11ubbr] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\Admin\EditProductForm.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\Admin\EditProductForm.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_attkhz] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\Admin\DashboardStats.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\Admin\DashboardStats.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_57d3yn] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\Admin\AdminSidebar.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\Admin\AdminSidebar.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_1v92ze] UI skeleton opportunity detected (simple layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\Admin\AdminHeader.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\Admin\AdminHeader.jsx with simple structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_ectr4d] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\components\Admin\AddProductForm.jsx:N/A
+
+**Description**
+Detected UI blocks in src\components\Admin\AddProductForm.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_y81vn7] UI skeleton opportunity detected (simple layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\FeaturedProductsSwitcherWrapper.jsx with simple structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_0jju3g] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4841,14 +4781,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_i5xs0p] UI skeleton opportunity detected (grid layout)
+#### [FINDING_1775807862663_cpyice] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\banners\page.jsx:N/A
+- File: src\app\admin\orders\page.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\admin\banners\page.jsx with grid structure.
+Detected UI blocks in src\app\admin\orders\page.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4861,14 +4801,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_5ckhtx] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_z7w78t] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\(public)\return-replacement\page.jsx:N/A
+- File: src\app\admin\products\page.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\(public)\return-replacement\page.jsx with complex-grid structure.
+Detected UI blocks in src\app\admin\products\page.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4881,14 +4821,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_ccr5hx] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_5o3e1b] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\(public)\order-cancellation\page.jsx:N/A
+- File: src\app\admin\homepage\page.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\(public)\order-cancellation\page.jsx with complex-grid structure.
+Detected UI blocks in src\app\admin\homepage\page.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -4901,27 +4841,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_6cfcyx] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\profile\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\profile\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_wi44b9] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_9wzsce] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4941,7 +4861,67 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_ednttd] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_7l0pya] UI skeleton opportunity detected (grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\banners\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\admin\banners\page.jsx with grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_k4qb5n] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\profile\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\profile\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_pcie1y] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\return-replacement\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\return-replacement\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_ohsrv8] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -4961,67 +4941,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_s98nzj] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\cart\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\cart\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_c6h8j3] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\check-out\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\check-out\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_xjkdmd] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\about\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\about\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_pzyeal] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_wu7inp] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
@@ -5041,7 +4961,27 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_kw1izv] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_u3gftz] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\order-cancellation\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\order-cancellation\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_f7vp48] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -5061,14 +5001,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_1smpaq] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_nx7h9i] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\orders\shipped\page.jsx:N/A
+- File: src\app\(public)\check-out\page.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\admin\orders\shipped\page.jsx with complex-grid structure.
+Detected UI blocks in src\app\(public)\check-out\page.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -5081,14 +5021,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_szdw0i] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_ykr5bz] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\orders\returns\page.jsx:N/A
+- File: src\app\(public)\cart\page.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\admin\orders\returns\page.jsx with complex-grid structure.
+Detected UI blocks in src\app\(public)\cart\page.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -5101,14 +5041,14 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_vu7i9r] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_pxd2ge] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
-- File: src\app\admin\payments\transactions\page.jsx:N/A
+- File: src\app\(public)\about\page.jsx:N/A
 
 **Description**
-Detected UI blocks in src\app\admin\payments\transactions\page.jsx with complex-grid structure.
+Detected UI blocks in src\app\(public)\about\page.jsx with complex-grid structure.
 
 **Impact**
 Users may experience poor perceived performance during loading states.
@@ -5121,127 +5061,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_73jk5p] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\orders\pending\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\admin\orders\pending\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_ttvw4s] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\policy\terms-and-condition\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\policy\terms-and-condition\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_6h69e5] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\policy\shipping-policy\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\policy\shipping-policy\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_lp13bv] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\policy\cancellationrefundpage\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\policy\cancellationrefundpage\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_7htux1] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\(public)\policy\privacy-policy\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\(public)\policy\privacy-policy\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_m7ydr6] UI skeleton opportunity detected (complex-grid layout)
-
-- Category: ui
-- Severity: medium
-- File: src\app\admin\payments\refunds\page.jsx:N/A
-
-**Description**
-Detected UI blocks in src\app\admin\payments\refunds\page.jsx with complex-grid structure.
-
-**Impact**
-Users may experience poor perceived performance during loading states.
-
-**Fix**
-Optional enhancement for better UX.
-
-**Confidence**
-likely
-
----
-
-#### [FINDING_1775803667569_d27x4l] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_byrh4w] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -5261,7 +5081,7 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_kn2d0t] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_s4cxfd] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -5281,7 +5101,27 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_8g1xfl] UI skeleton opportunity detected (simple layout)
+#### [FINDING_1775807862663_ozyaih] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\payments\transactions\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\admin\payments\transactions\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_v63nca] UI skeleton opportunity detected (simple layout)
 
 - Category: ui
 - Severity: medium
@@ -5301,7 +5141,167 @@ likely
 
 ---
 
-#### [FINDING_1775803667569_62jp5s] UI skeleton opportunity detected (complex-grid layout)
+#### [FINDING_1775807862663_1tydom] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\payments\refunds\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\admin\payments\refunds\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_epfsu8] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\orders\shipped\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\admin\orders\shipped\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_lrh917] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\orders\returns\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\admin\orders\returns\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_3d1hib] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\admin\orders\pending\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\admin\orders\pending\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_shuudo] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\policy\terms-and-condition\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\policy\terms-and-condition\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_nsrx9i] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\policy\shipping-policy\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\policy\shipping-policy\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_y61nwn] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\policy\privacy-policy\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\policy\privacy-policy\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_ni3ek3] UI skeleton opportunity detected (complex-grid layout)
+
+- Category: ui
+- Severity: medium
+- File: src\app\(public)\policy\cancellationrefundpage\page.jsx:N/A
+
+**Description**
+Detected UI blocks in src\app\(public)\policy\cancellationrefundpage\page.jsx with complex-grid structure.
+
+**Impact**
+Users may experience poor perceived performance during loading states.
+
+**Fix**
+Optional enhancement for better UX.
+
+**Confidence**
+likely
+
+---
+
+#### [FINDING_1775807862663_nfy3et] UI skeleton opportunity detected (complex-grid layout)
 
 - Category: ui
 - Severity: medium
@@ -5327,19 +5327,19 @@ likely
 - [INFINITE_LOOP_83] Infinite loop detected (src\app\api\admin\products\[id]\route.js:83)
 
 ### High Priority
+- [XSS_DOM_150] DOM-based XSS Risk (src\components\BrandShowcase.jsx:150)
 - [XSS_DOM_136] DOM-based XSS Risk (src\app\layout.js:136)
 - [XSS_DOM_157] DOM-based XSS Risk (src\app\layout.js:157)
 - [XSS_DOM_173] DOM-based XSS Risk (src\app\layout.js:173)
-- [XSS_DOM_150] DOM-based XSS Risk (src\components\BrandShowcase.jsx:150)
 - [SQL_INJECTION_373] Potential SQL Injection (src\components\Admin\EditProductForm.jsx:373)
 - [INFINITE_LOOP_RISK_83] Potential infinite loop (src\app\api\admin\products\[id]\route.js:83)
 - [N_PLUS_ONE_QUERY_5] Possible N+1 query pattern (src\app\api\products\upload-image\route.js:5)
 - [N_PLUS_ONE_QUERY_20] Possible N+1 query pattern (src\app\api\admin\update-banner\route.js:20)
-- [FINDING_1775803667569_oexj8f] UI skeleton opportunity detected (complex-grid layout) (src\components\ProductSection.jsx:N/A)
-- [FINDING_1775803667569_avs1nf] UI skeleton opportunity detected (complex-grid layout) (src\components\FeaturedProductsSwitcher.jsx:N/A)
-- [FINDING_1775803667569_6v87f2] UI skeleton opportunity detected (complex-grid layout) (src\components\FeaturedProduct.jsx:N/A)
-- [FINDING_1775803667569_krz161] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\all-products\page.jsx:N/A)
-- [FINDING_1775803667569_jb1jac] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\all-products\[type]\[title]\page.jsx:N/A)
+- [FINDING_1775807862663_aakb3w] UI skeleton opportunity detected (complex-grid layout) (src\components\ProductSection.jsx:N/A)
+- [FINDING_1775807862663_5nlc1s] UI skeleton opportunity detected (complex-grid layout) (src\components\FeaturedProductsSwitcher.jsx:N/A)
+- [FINDING_1775807862663_wa8z6a] UI skeleton opportunity detected (complex-grid layout) (src\components\FeaturedProduct.jsx:N/A)
+- [FINDING_1775807862663_k2uwqq] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\all-products\page.jsx:N/A)
+- [FINDING_1775807862663_w87i36] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\all-products\[type]\[title]\page.jsx:N/A)
 
 ### Optimization
 - [INSECURE_RANDOM_63] Insecure Random Generator (src\utils\avatarHelpers.js:63)
@@ -5350,119 +5350,121 @@ likely
 - [INSECURE_RANDOM_383] Insecure Random Generator (src\app\api\products\generate-ai\route.js:383)
 - [INSECURE_RANDOM_91] Insecure Random Generator (src\app\api\admin\export-products\route.js:91)
 - [DIRECT_OBJECT_REFERENCE_19] Direct object reference without validation (src\components\AmazonSearchInput.jsx:19)
+- [REPEATED_COMPUTATION_48] Expensive computation inside loop (src\utils\helpers.js:48)
+- [REPEATED_COMPUTATION_73] Expensive computation inside loop (src\utils\avatarHelpers.js:73)
+- [REPEATED_COMPUTATION_74] Expensive computation inside loop (src\utils\avatarHelpers.js:74)
+- [REPEATED_COMPUTATION_76] Expensive computation inside loop (src\utils\avatarHelpers.js:76)
+- [REPEATED_COMPUTATION_141] Expensive computation inside loop (src\utils\avatarHelpers.js:141)
 - [REPEATED_COMPUTATION_10] Expensive computation inside loop (src\lib\roleHelpers.js:10)
 - [REPEATED_COMPUTATION_256] Expensive computation inside loop (src\lib\emailService.js:256)
 - [REPEATED_COMPUTATION_452] Expensive computation inside loop (src\lib\emailService.js:452)
 - [REPEATED_COMPUTATION_567] Expensive computation inside loop (src\lib\emailService.js:567)
 - [REPEATED_COMPUTATION_647] Expensive computation inside loop (src\lib\emailService.js:647)
 - [REPEATED_COMPUTATION_735] Expensive computation inside loop (src\lib\emailService.js:735)
-- [REPEATED_COMPUTATION_48] Expensive computation inside loop (src\utils\helpers.js:48)
-- [REPEATED_COMPUTATION_73] Expensive computation inside loop (src\utils\avatarHelpers.js:73)
-- [REPEATED_COMPUTATION_74] Expensive computation inside loop (src\utils\avatarHelpers.js:74)
-- [REPEATED_COMPUTATION_76] Expensive computation inside loop (src\utils\avatarHelpers.js:76)
-- [REPEATED_COMPUTATION_141] Expensive computation inside loop (src\utils\avatarHelpers.js:141)
+- [MISSING_MEMO_6] Potential missing memoization for derived values (src\context\WishlistContext.js:6)
 - [MISSING_MEMO_12] Potential missing memoization for derived values (src\hooks\useAdminAuth.js:12)
 - [MISSING_MEMO_4] Potential missing memoization for derived values (src\context\CartContext.js:4)
 - [MISSING_MEMO_7] Potential missing memoization for derived values (src\context\AuthContext.js:7)
-- [MISSING_MEMO_6] Potential missing memoization for derived values (src\context\WishlistContext.js:6)
+- [MISSING_MEMO_9] Potential missing memoization for derived values (src\components\UserRoute.jsx:9)
 - [MISSING_MEMO_13] Potential missing memoization for derived values (src\components\Toast.jsx:13)
 - [MISSING_MEMO_14] Potential missing memoization for derived values (src\components\TestimonialsCarousel.jsx:14)
-- [MISSING_MEMO_9] Potential missing memoization for derived values (src\components\UserRoute.jsx:9)
-- [REPEATED_COMPUTATION_35] Expensive computation inside loop (src\app\sitemap.js:35)
-- [REPEATED_COMPUTATION_133] Expensive computation inside loop (src\app\sitemap.js:133)
-- [REPEATED_COMPUTATION_140] Expensive computation inside loop (src\app\layout.js:140)
 - [MISSING_MEMO_7] Potential missing memoization for derived values (src\components\Review.jsx:7)
-- [MISSING_MEMO_16] Potential missing memoization for derived values (src\components\ProductSchema.jsx:16)
+- [MISSING_MEMO_9] Potential missing memoization for derived values (src\components\PublicRoute.jsx:9)
 - [MISSING_MEMO_14] Potential missing memoization for derived values (src\components\ProductTypeBanners.jsx:14)
 - [CACHE_OPPORTUNITY_14] Cache opportunity for repeated external calls (src\components\ProductTypeBanners.jsx:14)
-- [MISSING_MEMO_9] Potential missing memoization for derived values (src\components\PublicRoute.jsx:9)
+- [CACHE_OPPORTUNITY_76] Cache opportunity for repeated external calls (src\components\ProductSlider.jsx:76)
 - [MISSING_MEMO_19] Potential missing memoization for derived values (src\components\ProductReviews.jsx:19)
 - [CACHE_OPPORTUNITY_32] Cache opportunity for repeated external calls (src\components\ProductReviews.jsx:32)
+- [MISSING_MEMO_16] Potential missing memoization for derived values (src\components\ProductSchema.jsx:16)
+- [MISSING_MEMO_9] Potential missing memoization for derived values (src\components\PrivateRoute.jsx:9)
 - [API_CALL_BURST_30] Multiple API calls detected (src\components\OrderHistory.js:30)
 - [MISSING_MEMO_23] Potential missing memoization for derived values (src\components\OrderHistory.js:23)
 - [CACHE_OPPORTUNITY_30] Cache opportunity for repeated external calls (src\components\OrderHistory.js:30)
-- [MISSING_MEMO_9] Potential missing memoization for derived values (src\components\PrivateRoute.jsx:9)
+- [MISSING_MEMO_17] Potential missing memoization for derived values (src\components\Navbar.jsx:17)
 - [MISSING_MEMO_7] Potential missing memoization for derived values (src\components\HeroSlider.jsx:7)
-- [CACHE_OPPORTUNITY_76] Cache opportunity for repeated external calls (src\components\ProductSlider.jsx:76)
 - [MISSING_MEMO_11] Potential missing memoization for derived values (src\components\CollectionSection.jsx:11)
 - [MISSING_MEMO_15] Potential missing memoization for derived values (src\components\BreadcrumbSchema.jsx:15)
-- [MISSING_MEMO_17] Potential missing memoization for derived values (src\components\Navbar.jsx:17)
 - [CACHE_OPPORTUNITY_32] Cache opportunity for repeated external calls (src\components\BestCollection1.jsx:32)
 - [EVENT_LOOP_BLOCKING_49] Heavy JSON parsing may block event loop (src\components\AmazonSearchInput.jsx:49)
 - [MISSING_MEMO_41] Potential missing memoization for derived values (src\components\AmazonSearchInput.jsx:41)
-- [REPEATED_COMPUTATION_33] Expensive computation inside loop (src\app\api\test-email\route.js:33)
-- [REPEATED_COMPUTATION_34] Expensive computation inside loop (src\app\api\test-email\route.js:34)
-- [MISSING_MEMO_14] Potential missing memoization for derived values (src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:14)
+- [REPEATED_COMPUTATION_35] Expensive computation inside loop (src\app\sitemap.js:35)
+- [REPEATED_COMPUTATION_133] Expensive computation inside loop (src\app\sitemap.js:133)
+- [REPEATED_COMPUTATION_140] Expensive computation inside loop (src\app\layout.js:140)
+- [MISSING_MEMO_22] Potential missing memoization for derived values (src\components\Card\Enquiry.jsx:22)
+- [CACHE_OPPORTUNITY_26] Cache opportunity for repeated external calls (src\components\Card\Enquiry.jsx:26)
 - [MISSING_MEMO_15] Potential missing memoization for derived values (src\components\Admin\ProtectedRoute.jsx:15)
 - [API_CALL_BURST_60] Multiple API calls detected (src\components\Admin\ModernDashboard.jsx:60)
 - [MISSING_MEMO_56] Potential missing memoization for derived values (src\components\Admin\ModernDashboard.jsx:56)
 - [CACHE_OPPORTUNITY_60] Cache opportunity for repeated external calls (src\components\Admin\ModernDashboard.jsx:60)
-- [MISSING_MEMO_58] Potential missing memoization for derived values (src\components\Admin\DashboardStats.jsx:58)
-- [CACHE_OPPORTUNITY_61] Cache opportunity for repeated external calls (src\components\Admin\DashboardStats.jsx:61)
 - [API_CALL_BURST_75] Multiple API calls detected (src\components\Admin\EditProductForm.jsx:75)
 - [MISSING_MEMO_53] Potential missing memoization for derived values (src\components\Admin\EditProductForm.jsx:53)
 - [CACHE_OPPORTUNITY_75] Cache opportunity for repeated external calls (src\components\Admin\EditProductForm.jsx:75)
+- [MISSING_MEMO_58] Potential missing memoization for derived values (src\components\Admin\DashboardStats.jsx:58)
+- [CACHE_OPPORTUNITY_61] Cache opportunity for repeated external calls (src\components\Admin\DashboardStats.jsx:61)
 - [API_CALL_BURST_78] Multiple API calls detected (src\components\Admin\AddProductForm.jsx:78)
 - [MISSING_MEMO_56] Potential missing memoization for derived values (src\components\Admin\AddProductForm.jsx:56)
 - [CACHE_OPPORTUNITY_78] Cache opportunity for repeated external calls (src\components\Admin\AddProductForm.jsx:78)
-- [MISSING_MEMO_22] Potential missing memoization for derived values (src\components\Card\Enquiry.jsx:22)
-- [CACHE_OPPORTUNITY_26] Cache opportunity for repeated external calls (src\components\Card\Enquiry.jsx:26)
+- [MISSING_MEMO_14] Potential missing memoization for derived values (src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:14)
+- [REPEATED_COMPUTATION_33] Expensive computation inside loop (src\app\api\test-email\route.js:33)
+- [REPEATED_COMPUTATION_34] Expensive computation inside loop (src\app\api\test-email\route.js:34)
+- [REPEATED_COMPUTATION_47] Expensive computation inside loop (src\app\api\notifications\route.js:47)
 - [REPEATED_COMPUTATION_66] Expensive computation inside loop (src\app\api\contact\route.js:66)
 - [REPEATED_COMPUTATION_273] Expensive computation inside loop (src\app\api\contact\route.js:273)
 - [REPEATED_COMPUTATION_287] Expensive computation inside loop (src\app\api\contact\route.js:287)
-- [REPEATED_COMPUTATION_47] Expensive computation inside loop (src\app\api\notifications\route.js:47)
-- [MISSING_MEMO_19] Potential missing memoization for derived values (src\app\admin\users\page.js:19)
-- [API_CALL_BURST_52] Multiple API calls detected (src\app\admin\products\page.jsx:52)
-- [MISSING_MEMO_15] Potential missing memoization for derived values (src\app\admin\products\page.jsx:15)
-- [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls (src\app\admin\products\page.jsx:52)
+- [MISSING_MEMO_13] Potential missing memoization for derived values (src\app\admin\payments\page.jsx:13)
 - [API_CALL_BURST_22] Multiple API calls detected (src\app\admin\orders\page.jsx:22)
 - [MISSING_MEMO_19] Potential missing memoization for derived values (src\app\admin\orders\page.jsx:19)
 - [CACHE_OPPORTUNITY_22] Cache opportunity for repeated external calls (src\app\admin\orders\page.jsx:22)
+- [API_CALL_BURST_52] Multiple API calls detected (src\app\admin\products\page.jsx:52)
+- [MISSING_MEMO_15] Potential missing memoization for derived values (src\app\admin\products\page.jsx:15)
+- [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls (src\app\admin\products\page.jsx:52)
+- [MISSING_MEMO_19] Potential missing memoization for derived values (src\app\admin\users\page.js:19)
 - [MISSING_MEMO_20] Potential missing memoization for derived values (src\app\admin\homepage\page.jsx:20)
 - [CACHE_OPPORTUNITY_23] Cache opportunity for repeated external calls (src\app\admin\homepage\page.jsx:23)
-- [MISSING_MEMO_13] Potential missing memoization for derived values (src\app\admin\payments\page.jsx:13)
 - [MISSING_MEMO_23] Potential missing memoization for derived values (src\app\admin\banners\page.jsx:23)
 - [CACHE_OPPORTUNITY_23] Cache opportunity for repeated external calls (src\app\admin\banners\page.jsx:23)
-- [REPEATED_COMPUTATION_172] Expensive computation inside loop (src\app\api\products\generate-ai\route.js:172)
-- [REPEATED_COMPUTATION_215] Expensive computation inside loop (src\app\api\products\generate-ai\route.js:215)
-- [EVENT_LOOP_BLOCKING_281] Heavy JSON parsing may block event loop (src\app\api\products\generate-ai\route.js:281)
-- [MISSING_MEMO_22] Potential missing memoization for derived values (src\app\(public)\return-replacement\page.jsx:22)
-- [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls (src\app\(public)\return-replacement\page.jsx:52)
-- [MISSING_MEMO_20] Potential missing memoization for derived values (src\app\(public)\order-cancellation\page.jsx:20)
-- [CACHE_OPPORTUNITY_37] Cache opportunity for repeated external calls (src\app\(public)\order-cancellation\page.jsx:37)
 - [API_CALL_BURST_99] Multiple API calls detected (src\app\(public)\profile\page.jsx:99)
 - [MISSING_MEMO_30] Potential missing memoization for derived values (src\app\(public)\profile\page.jsx:30)
 - [CACHE_OPPORTUNITY_99] Cache opportunity for repeated external calls (src\app\(public)\profile\page.jsx:99)
+- [MISSING_MEMO_22] Potential missing memoization for derived values (src\app\(public)\return-replacement\page.jsx:22)
+- [CACHE_OPPORTUNITY_52] Cache opportunity for repeated external calls (src\app\(public)\return-replacement\page.jsx:52)
 - [MISSING_MEMO_11] Potential missing memoization for derived values (src\app\(public)\order-confirmation\page.jsx:11)
-- [MISSING_MEMO_12] Potential missing memoization for derived values (src\app\(public)\cart\page.jsx:12)
+- [MISSING_MEMO_20] Potential missing memoization for derived values (src\app\(public)\order-cancellation\page.jsx:20)
+- [CACHE_OPPORTUNITY_37] Cache opportunity for repeated external calls (src\app\(public)\order-cancellation\page.jsx:37)
+- [MISSING_MEMO_20] Potential missing memoization for derived values (src\app\(public)\contact-us\ContactPageClient.jsx:20)
+- [CACHE_OPPORTUNITY_24] Cache opportunity for repeated external calls (src\app\(public)\contact-us\ContactPageClient.jsx:24)
 - [API_CALL_BURST_51] Multiple API calls detected (src\app\(public)\check-out\page.jsx:51)
 - [MISSING_MEMO_60] Potential missing memoization for derived values (src\app\(public)\check-out\page.jsx:60)
 - [CACHE_OPPORTUNITY_51] Cache opportunity for repeated external calls (src\app\(public)\check-out\page.jsx:51)
+- [MISSING_MEMO_12] Potential missing memoization for derived values (src\app\(public)\cart\page.jsx:12)
+- [REPEATED_COMPUTATION_172] Expensive computation inside loop (src\app\api\products\generate-ai\route.js:172)
+- [REPEATED_COMPUTATION_215] Expensive computation inside loop (src\app\api\products\generate-ai\route.js:215)
+- [EVENT_LOOP_BLOCKING_281] Heavy JSON parsing may block event loop (src\app\api\products\generate-ai\route.js:281)
 - [REPEATED_COMPUTATION_71] Expensive computation inside loop (src\app\api\orders\[id]\route.js:71)
 - [REPEATED_COMPUTATION_74] Expensive computation inside loop (src\app\api\orders\[id]\route.js:74)
 - [REPEATED_COMPUTATION_84] Expensive computation inside loop (src\app\api\orders\[id]\route.js:84)
-- [REPEATED_COMPUTATION_60] Expensive computation inside loop (src\app\api\admin\update-banner\route.js:60)
-- [MISSING_MEMO_20] Potential missing memoization for derived values (src\app\(public)\contact-us\ContactPageClient.jsx:20)
-- [CACHE_OPPORTUNITY_24] Cache opportunity for repeated external calls (src\app\(public)\contact-us\ContactPageClient.jsx:24)
-- [REPEATED_COMPUTATION_195] Expensive computation inside loop (src\app\api\admin\export-products\route.js:195)
 - [REPEATED_COMPUTATION_35] Expensive computation inside loop (src\app\api\analytics\pageview\route.js:35)
 - [REPEATED_COMPUTATION_56] Expensive computation inside loop (src\app\api\analytics\pageview\route.js:56)
-- [REPEATED_COMPUTATION_74] Expensive computation inside loop (src\app\api\admin\homepage-settings\route.js:74)
-- [MISSING_MEMO_8] Potential missing memoization for derived values (src\app\admin\orders\shipped\page.jsx:8)
-- [MISSING_MEMO_8] Potential missing memoization for derived values (src\app\admin\orders\returns\page.jsx:8)
-- [MISSING_MEMO_15] Potential missing memoization for derived values (src\app\admin\payments\transactions\page.jsx:15)
-- [MISSING_MEMO_9] Potential missing memoization for derived values (src\app\admin\orders\pending\page.jsx:9)
-- [CACHE_OPPORTUNITY_21] Cache opportunity for repeated external calls (src\app\admin\orders\pending\page.jsx:21)
+- [REPEATED_COMPUTATION_60] Expensive computation inside loop (src\app\api\admin\update-banner\route.js:60)
 - [REPEATED_COMPUTATION_23] Expensive computation inside loop (src\app\api\admin\save-banner-set\route.js:23)
-- [MISSING_MEMO_14] Potential missing memoization for derived values (src\app\admin\payments\refunds\page.jsx:14)
+- [REPEATED_COMPUTATION_74] Expensive computation inside loop (src\app\api\admin\homepage-settings\route.js:74)
+- [REPEATED_COMPUTATION_195] Expensive computation inside loop (src\app\api\admin\export-products\route.js:195)
 - [MISSING_MEMO_8] Potential missing memoization for derived values (src\app\admin\products\[title]\page.jsx:8)
 - [CACHE_OPPORTUNITY_32] Cache opportunity for repeated external calls (src\app\admin\products\[title]\page.jsx:32)
+- [CACHE_OPPORTUNITY_46] Cache opportunity for repeated external calls (src\app\admin\products\inventory\page.jsx:46)
+- [MISSING_MEMO_15] Potential missing memoization for derived values (src\app\admin\payments\transactions\page.jsx:15)
+- [MISSING_MEMO_14] Potential missing memoization for derived values (src\app\admin\payments\refunds\page.jsx:14)
+- [MISSING_MEMO_8] Potential missing memoization for derived values (src\app\admin\orders\shipped\page.jsx:8)
+- [MISSING_MEMO_8] Potential missing memoization for derived values (src\app\admin\orders\returns\page.jsx:8)
+- [MISSING_MEMO_9] Potential missing memoization for derived values (src\app\admin\orders\pending\page.jsx:9)
+- [CACHE_OPPORTUNITY_21] Cache opportunity for repeated external calls (src\app\admin\orders\pending\page.jsx:21)
 - [REPEATED_COMPUTATION_41] Expensive computation inside loop (src\app\api\orders\[id]\return\route.js:41)
 - [REPEATED_COMPUTATION_49] Expensive computation inside loop (src\app\api\orders\[id]\return\route.js:49)
-- [CACHE_OPPORTUNITY_46] Cache opportunity for repeated external calls (src\app\admin\products\inventory\page.jsx:46)
-- [REPEATED_COMPUTATION_37] Expensive computation inside loop (src\app\api\orders\[id]\confirm\route.js:37)
 - [REPEATED_COMPUTATION_41] Expensive computation inside loop (src\app\api\orders\[id]\replace\route.js:41)
 - [REPEATED_COMPUTATION_49] Expensive computation inside loop (src\app\api\orders\[id]\replace\route.js:49)
+- [REPEATED_COMPUTATION_37] Expensive computation inside loop (src\app\api\orders\[id]\confirm\route.js:37)
+- [REPEATED_COMPUTATION_44] Expensive computation inside loop (src\app\api\orders\[id]\cancel\route.js:44)
+- [REPEATED_COMPUTATION_70] Expensive computation inside loop (src\app\api\orders\[id]\cancel\route.js:70)
 - [REPEATED_COMPUTATION_11] Expensive computation inside loop (src\app\api\admin\dashboard\stats\route.js:11)
 - [REPEATED_COMPUTATION_12] Expensive computation inside loop (src\app\api\admin\dashboard\stats\route.js:12)
 - [REPEATED_COMPUTATION_13] Expensive computation inside loop (src\app\api\admin\dashboard\stats\route.js:13)
@@ -5480,79 +5482,77 @@ likely
 - [REPEATED_COMPUTATION_70] Expensive computation inside loop (src\app\api\admin\dashboard\stats\route.js:70)
 - [REPEATED_COMPUTATION_102] Expensive computation inside loop (src\app\api\admin\dashboard\stats\route.js:102)
 - [REPEATED_COMPUTATION_125] Expensive computation inside loop (src\app\api\admin\dashboard\stats\route.js:125)
-- [REPEATED_COMPUTATION_44] Expensive computation inside loop (src\app\api\orders\[id]\cancel\route.js:44)
-- [REPEATED_COMPUTATION_70] Expensive computation inside loop (src\app\api\orders\[id]\cancel\route.js:70)
 - [REPEATED_COMPUTATION_9] Expensive computation inside loop (src\app\api\admin\analytics\traffic\route.js:9)
 - [REPEATED_COMPUTATION_10] Expensive computation inside loop (src\app\api\admin\analytics\traffic\route.js:10)
-- [FINDING_1775803667568_9avvae] UI skeleton opportunity detected (simple layout) (src\components\ToastContainer.jsx:N/A)
-- [FINDING_1775803667569_ts2a5v] UI skeleton opportunity detected (complex-grid layout) (src\components\Toast.jsx:N/A)
-- [FINDING_1775803667569_o0r4vq] UI skeleton opportunity detected (simple layout) (src\app\not-found.jsx:N/A)
-- [FINDING_1775803667569_5b7jd9] UI skeleton opportunity detected (complex-grid layout) (src\components\TestimonialsCarousel.jsx:N/A)
-- [FINDING_1775803667569_r5se4e] UI skeleton opportunity detected (grid layout) (src\components\SerpPreview.jsx:N/A)
-- [FINDING_1775803667569_bgufeq] UI skeleton opportunity detected (simple layout) (src\components\UserRoute.jsx:N/A)
-- [FINDING_1775803667569_jwznv9] UI skeleton opportunity detected (complex-grid layout) (src\components\Review.jsx:N/A)
-- [FINDING_1775803667569_zse6pi] UI skeleton opportunity detected (complex-grid layout) (src\components\ReviewForm.jsx:N/A)
-- [FINDING_1775803667569_1xsrix] UI skeleton opportunity detected (simple layout) (src\components\Providers.jsx:N/A)
-- [FINDING_1775803667569_0ad3c5] UI skeleton opportunity detected (simple layout) (src\components\ProductTypeBanners.jsx:N/A)
-- [FINDING_1775803667569_55uaa7] UI skeleton opportunity detected (simple layout) (src\components\PublicRoute.jsx:N/A)
-- [FINDING_1775803667569_wtwbdi] UI skeleton opportunity detected (complex-grid layout) (src\components\ProductReviews.jsx:N/A)
-- [FINDING_1775803667569_6jn3br] UI skeleton opportunity detected (simple layout) (src\components\PlaceholderImage.jsx:N/A)
-- [FINDING_1775803667569_m69h2g] UI skeleton opportunity detected (grid layout) (src\components\footer.jsx:N/A)
-- [FINDING_1775803667569_a3r6i3] UI skeleton opportunity detected (simple layout) (src\components\PrivateRoute.jsx:N/A)
-- [FINDING_1775803667569_zrjhv4] UI skeleton opportunity detected (grid layout) (src\components\HeroSlider.jsx:N/A)
-- [FINDING_1775803667569_bf14zx] UI skeleton opportunity detected (complex-grid layout) (src\components\ProductSlider.jsx:N/A)
-- [FINDING_1775803667569_atchdr] UI skeleton opportunity detected (simple layout) (src\components\CollectionSection.jsx:N/A)
-- [FINDING_1775803667569_cqjwic] UI skeleton opportunity detected (complex-grid layout) (src\components\Navbar.jsx:N/A)
-- [FINDING_1775803667569_kn1f46] UI skeleton opportunity detected (grid layout) (src\components\CompanyIntro.jsx:N/A)
-- [FINDING_1775803667569_705z6y] UI skeleton opportunity detected (complex-grid layout) (src\components\BestCollection1.jsx:N/A)
-- [FINDING_1775803667569_9xjjer] UI skeleton opportunity detected (grid layout) (src\components\BrandShowcase.jsx:N/A)
-- [FINDING_1775803667569_ikj8t0] UI skeleton opportunity detected (complex-grid layout) (src\components\AmazonSearchInput.jsx:N/A)
-- [FINDING_1775803667569_8m1ytc] UI skeleton opportunity detected (simple layout) (src\components\BannerUpload.jsx:N/A)
-- [FINDING_1775803667569_ph2qq4] UI skeleton opportunity detected (simple layout) (src\components\BannerSlot.jsx:N/A)
-- [FINDING_1775803667569_cpfmlw] UI skeleton opportunity detected (simple layout) (src\components\BannerStack.jsx:N/A)
-- [FINDING_1775803667569_qfdt4p] UI skeleton opportunity detected (simple layout) (src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:N/A)
-- [FINDING_1775803667569_yc5hxp] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\ProtectedRoute.jsx:N/A)
-- [FINDING_1775803667569_um6t7v] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\AdminSidebar.jsx:N/A)
-- [FINDING_1775803667569_shul3e] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\ModernDashboard.jsx:N/A)
-- [FINDING_1775803667569_4whj0j] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\ProductTable.jsx:N/A)
-- [FINDING_1775803667569_tmvqjb] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\DashboardStats.jsx:N/A)
-- [FINDING_1775803667569_pawqr6] UI skeleton opportunity detected (complex-grid layout) (src\components\Card\ProductCard.jsx:N/A)
-- [FINDING_1775803667569_kp90qr] UI skeleton opportunity detected (simple layout) (src\components\Admin\AdminHeader.jsx:N/A)
-- [FINDING_1775803667569_h8vqtx] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\EditProductForm.jsx:N/A)
-- [FINDING_1775803667569_w3xkgx] UI skeleton opportunity detected (grid layout) (src\components\Card\NotifyForm.jsx:N/A)
-- [FINDING_1775803667569_zarmlh] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\AddProductForm.jsx:N/A)
-- [FINDING_1775803667569_jdfx6s] UI skeleton opportunity detected (complex-grid layout) (src\components\Card\Enquiry.jsx:N/A)
-- [FINDING_1775803667569_0grned] UI skeleton opportunity detected (grid layout) (src\components\Card\Funtion.jsx:N/A)
-- [FINDING_1775803667569_g2b8q9] UI skeleton opportunity detected (simple layout) (src\components\Card\CollectionCard.jsx:N/A)
-- [FINDING_1775803667569_aarjeg] UI skeleton opportunity detected (complex-grid layout) (src\components\Card\FeatureCard.jsx:N/A)
-- [FINDING_1775803667569_xy07lk] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\products\page.jsx:N/A)
-- [FINDING_1775803667569_ucydhn] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\page.jsx:N/A)
-- [FINDING_1775803667569_5re3k7] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\homepage\page.jsx:N/A)
-- [FINDING_1775803667569_3vowki] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\payments\page.jsx:N/A)
-- [FINDING_1775803667569_i5xs0p] UI skeleton opportunity detected (grid layout) (src\app\admin\banners\page.jsx:N/A)
-- [FINDING_1775803667569_5ckhtx] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\return-replacement\page.jsx:N/A)
-- [FINDING_1775803667569_ccr5hx] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\order-cancellation\page.jsx:N/A)
-- [FINDING_1775803667569_6cfcyx] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\profile\page.jsx:N/A)
-- [FINDING_1775803667569_wi44b9] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\wishlist\page.jsx:N/A)
-- [FINDING_1775803667569_ednttd] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\order-confirmation\page.jsx:N/A)
-- [FINDING_1775803667569_s98nzj] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\cart\page.jsx:N/A)
-- [FINDING_1775803667569_c6h8j3] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\check-out\page.jsx:N/A)
-- [FINDING_1775803667569_xjkdmd] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\about\page.jsx:N/A)
-- [FINDING_1775803667569_pzyeal] UI skeleton opportunity detected (simple layout) (src\app\(public)\login\page.jsx:N/A)
-- [FINDING_1775803667569_kw1izv] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\contact-us\ContactPageClient.jsx:N/A)
-- [FINDING_1775803667569_1smpaq] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\shipped\page.jsx:N/A)
-- [FINDING_1775803667569_szdw0i] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\returns\page.jsx:N/A)
-- [FINDING_1775803667569_vu7i9r] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\payments\transactions\page.jsx:N/A)
-- [FINDING_1775803667569_73jk5p] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\pending\page.jsx:N/A)
-- [FINDING_1775803667569_ttvw4s] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\terms-and-condition\page.jsx:N/A)
-- [FINDING_1775803667569_6h69e5] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\shipping-policy\page.jsx:N/A)
-- [FINDING_1775803667569_lp13bv] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\cancellationrefundpage\page.jsx:N/A)
-- [FINDING_1775803667569_7htux1] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\privacy-policy\page.jsx:N/A)
-- [FINDING_1775803667569_m7ydr6] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\payments\refunds\page.jsx:N/A)
-- [FINDING_1775803667569_d27x4l] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\products\[title]\page.jsx:N/A)
-- [FINDING_1775803667569_kn2d0t] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\products\inventory\page.jsx:N/A)
-- [FINDING_1775803667569_8g1xfl] UI skeleton opportunity detected (simple layout) (src\app\admin\products\add\page.jsx:N/A)
-- [FINDING_1775803667569_62jp5s] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\all-products\[type]\page.jsx:N/A)
+- [FINDING_1775807862663_mtjujj] UI skeleton opportunity detected (simple layout) (src\components\UserRoute.jsx:N/A)
+- [FINDING_1775807862663_ark2th] UI skeleton opportunity detected (complex-grid layout) (src\components\Toast.jsx:N/A)
+- [FINDING_1775807862663_b629fl] UI skeleton opportunity detected (complex-grid layout) (src\components\TestimonialsCarousel.jsx:N/A)
+- [FINDING_1775807862663_t01uoh] UI skeleton opportunity detected (grid layout) (src\components\SerpPreview.jsx:N/A)
+- [FINDING_1775807862663_vda2rv] UI skeleton opportunity detected (complex-grid layout) (src\components\ReviewForm.jsx:N/A)
+- [FINDING_1775807862663_2ysiwk] UI skeleton opportunity detected (simple layout) (src\components\ToastContainer.jsx:N/A)
+- [FINDING_1775807862663_afe00l] UI skeleton opportunity detected (complex-grid layout) (src\components\Review.jsx:N/A)
+- [FINDING_1775807862663_633vd7] UI skeleton opportunity detected (simple layout) (src\components\PublicRoute.jsx:N/A)
+- [FINDING_1775807862663_2cz0w9] UI skeleton opportunity detected (simple layout) (src\components\Providers.jsx:N/A)
+- [FINDING_1775807862663_dc5qji] UI skeleton opportunity detected (simple layout) (src\components\ProductTypeBanners.jsx:N/A)
+- [FINDING_1775807862663_6mrcoe] UI skeleton opportunity detected (complex-grid layout) (src\components\ProductSlider.jsx:N/A)
+- [FINDING_1775807862663_xm3pqz] UI skeleton opportunity detected (complex-grid layout) (src\components\ProductReviews.jsx:N/A)
+- [FINDING_1775807862663_60d2dg] UI skeleton opportunity detected (simple layout) (src\components\PlaceholderImage.jsx:N/A)
+- [FINDING_1775807862663_emjvet] UI skeleton opportunity detected (simple layout) (src\components\PrivateRoute.jsx:N/A)
+- [FINDING_1775807862663_b2hj37] UI skeleton opportunity detected (complex-grid layout) (src\components\Navbar.jsx:N/A)
+- [FINDING_1775807862663_c7u208] UI skeleton opportunity detected (grid layout) (src\components\HeroSlider.jsx:N/A)
+- [FINDING_1775807862663_8lcdel] UI skeleton opportunity detected (grid layout) (src\components\footer.jsx:N/A)
+- [FINDING_1775807862663_n5ttrp] UI skeleton opportunity detected (grid layout) (src\components\CompanyIntro.jsx:N/A)
+- [FINDING_1775807862663_uykf47] UI skeleton opportunity detected (simple layout) (src\components\CollectionSection.jsx:N/A)
+- [FINDING_1775807862663_23u8p8] UI skeleton opportunity detected (grid layout) (src\components\BrandShowcase.jsx:N/A)
+- [FINDING_1775807862663_jjr5d8] UI skeleton opportunity detected (complex-grid layout) (src\components\BestCollection1.jsx:N/A)
+- [FINDING_1775807862663_vyj0n1] UI skeleton opportunity detected (simple layout) (src\components\BannerStack.jsx:N/A)
+- [FINDING_1775807862663_hkgeal] UI skeleton opportunity detected (simple layout) (src\components\BannerUpload.jsx:N/A)
+- [FINDING_1775807862663_xi3ih4] UI skeleton opportunity detected (simple layout) (src\components\BannerSlot.jsx:N/A)
+- [FINDING_1775807862663_j8h3mp] UI skeleton opportunity detected (complex-grid layout) (src\components\AmazonSearchInput.jsx:N/A)
+- [FINDING_1775807862663_clqmhr] UI skeleton opportunity detected (simple layout) (src\app\not-found.jsx:N/A)
+- [FINDING_1775807862663_23jjsq] UI skeleton opportunity detected (complex-grid layout) (src\components\Card\ProductCard.jsx:N/A)
+- [FINDING_1775807862663_eciw22] UI skeleton opportunity detected (grid layout) (src\components\Card\Funtion.jsx:N/A)
+- [FINDING_1775807862663_14gbth] UI skeleton opportunity detected (complex-grid layout) (src\components\Card\Enquiry.jsx:N/A)
+- [FINDING_1775807862663_ka9vng] UI skeleton opportunity detected (grid layout) (src\components\Card\NotifyForm.jsx:N/A)
+- [FINDING_1775807862663_hkk90n] UI skeleton opportunity detected (complex-grid layout) (src\components\Card\FeatureCard.jsx:N/A)
+- [FINDING_1775807862663_d7x67g] UI skeleton opportunity detected (simple layout) (src\components\Card\CollectionCard.jsx:N/A)
+- [FINDING_1775807862663_s20s5n] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\ProtectedRoute.jsx:N/A)
+- [FINDING_1775807862663_6bz4kv] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\ProductTable.jsx:N/A)
+- [FINDING_1775807862663_59nk6o] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\ModernDashboard.jsx:N/A)
+- [FINDING_1775807862663_11ubbr] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\EditProductForm.jsx:N/A)
+- [FINDING_1775807862663_attkhz] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\DashboardStats.jsx:N/A)
+- [FINDING_1775807862663_57d3yn] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\AdminSidebar.jsx:N/A)
+- [FINDING_1775807862663_1v92ze] UI skeleton opportunity detected (simple layout) (src\components\Admin\AdminHeader.jsx:N/A)
+- [FINDING_1775807862663_ectr4d] UI skeleton opportunity detected (complex-grid layout) (src\components\Admin\AddProductForm.jsx:N/A)
+- [FINDING_1775807862663_y81vn7] UI skeleton opportunity detected (simple layout) (src\app\(public)\FeaturedProductsSwitcherWrapper.jsx:N/A)
+- [FINDING_1775807862663_0jju3g] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\payments\page.jsx:N/A)
+- [FINDING_1775807862663_cpyice] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\page.jsx:N/A)
+- [FINDING_1775807862663_z7w78t] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\products\page.jsx:N/A)
+- [FINDING_1775807862663_5o3e1b] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\homepage\page.jsx:N/A)
+- [FINDING_1775807862663_9wzsce] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\wishlist\page.jsx:N/A)
+- [FINDING_1775807862663_7l0pya] UI skeleton opportunity detected (grid layout) (src\app\admin\banners\page.jsx:N/A)
+- [FINDING_1775807862663_k4qb5n] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\profile\page.jsx:N/A)
+- [FINDING_1775807862663_pcie1y] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\return-replacement\page.jsx:N/A)
+- [FINDING_1775807862663_ohsrv8] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\order-confirmation\page.jsx:N/A)
+- [FINDING_1775807862663_wu7inp] UI skeleton opportunity detected (simple layout) (src\app\(public)\login\page.jsx:N/A)
+- [FINDING_1775807862663_u3gftz] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\order-cancellation\page.jsx:N/A)
+- [FINDING_1775807862663_f7vp48] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\contact-us\ContactPageClient.jsx:N/A)
+- [FINDING_1775807862663_nx7h9i] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\check-out\page.jsx:N/A)
+- [FINDING_1775807862663_ykr5bz] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\cart\page.jsx:N/A)
+- [FINDING_1775807862663_pxd2ge] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\about\page.jsx:N/A)
+- [FINDING_1775807862663_byrh4w] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\products\[title]\page.jsx:N/A)
+- [FINDING_1775807862663_s4cxfd] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\products\inventory\page.jsx:N/A)
+- [FINDING_1775807862663_ozyaih] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\payments\transactions\page.jsx:N/A)
+- [FINDING_1775807862663_v63nca] UI skeleton opportunity detected (simple layout) (src\app\admin\products\add\page.jsx:N/A)
+- [FINDING_1775807862663_1tydom] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\payments\refunds\page.jsx:N/A)
+- [FINDING_1775807862663_epfsu8] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\shipped\page.jsx:N/A)
+- [FINDING_1775807862663_lrh917] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\returns\page.jsx:N/A)
+- [FINDING_1775807862663_3d1hib] UI skeleton opportunity detected (complex-grid layout) (src\app\admin\orders\pending\page.jsx:N/A)
+- [FINDING_1775807862663_shuudo] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\terms-and-condition\page.jsx:N/A)
+- [FINDING_1775807862663_nsrx9i] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\shipping-policy\page.jsx:N/A)
+- [FINDING_1775807862663_y61nwn] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\privacy-policy\page.jsx:N/A)
+- [FINDING_1775807862663_ni3ek3] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\policy\cancellationrefundpage\page.jsx:N/A)
+- [FINDING_1775807862663_nfy3et] UI skeleton opportunity detected (complex-grid layout) (src\app\(public)\all-products\[type]\page.jsx:N/A)
 
 ## Final Verdict
 

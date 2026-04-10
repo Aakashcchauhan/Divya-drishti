@@ -5,7 +5,7 @@ import { log } from "../utils/logger.js";
 
 export const runEngine = async (repoPath, options = {}) => {
   // Using the path where the agent.yaml exists in your workspace
-  const config = loadYaml("./agent.yaml");
+  const config = await loadYaml("./agent.yaml");
   const skills = await loadSkills();
 
   log("Starting audit...");

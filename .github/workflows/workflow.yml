@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -23,21 +26,21 @@ jobs:
 
     steps:
       - name: Checkout target repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Checkout Divya Drishti auditor
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ env.AUDITOR_REPO }}
           ref: ${{ env.AUDITOR_REF }}
           path: .divya-drishti
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: .divya-drishti/package-lock.json
 
@@ -172,7 +175,7 @@ jobs:
 
       - name: Upload audit report artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: divya-drishti-audit-${{ github.run_number }}
           if-no-files-found: warn

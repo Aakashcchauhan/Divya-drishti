@@ -26,6 +26,9 @@ permissions:
   contents: write
   pull-requests: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 concurrency:
   group: divya-drishti-${{ github.ref }}
   cancel-in-progress: true
@@ -43,14 +46,14 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install Dependencies
@@ -155,7 +158,7 @@ jobs:
 
       - name: Upload Full Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: full-audit-report
           if-no-files-found: warn
@@ -163,7 +166,7 @@ jobs:
 
       - name: Upload Summary Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: summary-report
           if-no-files-found: warn
@@ -171,7 +174,7 @@ jobs:
 
       - name: Upload Patch Suggestions
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: patch-suggestions
           if-no-files-found: warn
@@ -179,7 +182,7 @@ jobs:
 
       - name: Upload PDF Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: audit-pdf
           if-no-files-found: warn
@@ -205,7 +208,8 @@ jobs:
 
       - name: Create Pull Request with Reports
         if: github.event_name == 'push' && env.CREATE_AUDIT_PR == 'true' && github.actor != 'github-actions[bot]'
-        uses: peter-evans/create-pull-request@v6
+        continue-on-error: true
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(audit): automated Divya Drishti report"
@@ -221,8 +225,9 @@ jobs:
             - Covers security, logic, performance, and UI
 
             Please review before merging.
-          branch: audit/${{ github.run_id }}
+          branch: audit/run-${{ github.run_id }}-${{ github.run_attempt }}
           base: ${{ github.ref_name }}
+          delete-branch: true
           add-paths: |
             AUDIT_REPORT.md
             SUMMARY.md
